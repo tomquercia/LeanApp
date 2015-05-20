@@ -27,6 +27,7 @@ public class FabToolbar extends RevealFrameLayout {
 	private float screenWidth;
 	private int animationDuration = DEFAULT_ANIMATION_DURATION;
 	private OnClickListener clickListener;
+	private int state = 0;
 
 	public FabToolbar(Context context) {
 		super(context);
@@ -122,6 +123,7 @@ public class FabToolbar extends RevealFrameLayout {
 
 	public void hide() {
 		//If button was attached to list and got hidden, closing the toolbar should still show the button
+		state = 0;
 		button.show(false);
 		animateCircle(screenWidth, 0, new ToolbarCollapseListener());
 	}
@@ -184,9 +186,14 @@ public class FabToolbar extends RevealFrameLayout {
 		return container != null && !(child instanceof FloatingActionButton);
 	}
 
+	public int getState(){
+		return state;
+	}
+
 	private class ButtonClickListener implements OnClickListener {
 		@Override
 		public void onClick(View v) {
+			state = 1;
 			show();
 
 			if (clickListener != null) {
