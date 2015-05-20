@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Lean</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="clock_in">Start your day!</string>
+    <string name="work_day">Your work day!</string>
+    <string name="start_alerts">Clock In!</string>
+    <string name="stop_alerts">Clock Out!</string>
+    <string name="title_activity_time_management">TimeManagement</string>
+    <string name="temp_time">Your time goes here!</string>
+    <string name="title_activity_temp">TempActivity</string>
+
+</resources>
