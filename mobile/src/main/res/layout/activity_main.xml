@@ -25,7 +25,7 @@
         android:textSize="40sp"
         android:textStyle="bold"
         android:layout_marginTop="60dp"
-        android:textColor="#ff1643b0" />
+        android:textColor="#ff000000" />
 
     <Button
         android:layout_width="match_parent"
@@ -52,23 +52,32 @@
         tb:tb_button_gravity="end"
         tb:tb_container_gravity="center"
         >
-        <TextView android:text="@string/clock_in" android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:id="@+id/go"
-            android:layout_gravity="center"
-            android:textSize="40dp"
-            android:textStyle="bold"
-            android:layout_marginTop="60dp" />
 
-        <ImageView
-            android:id="@+id/attach"
+        <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_notify"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            />
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="@string/clock_in"
+                android:layout_width="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:id="@+id/go"
+                android:textSize="32sp"
+                android:layout_marginLeft="8dp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/attach"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_notify"
+                />
+        </RelativeLayout>
 
     </com.github.alexkolpa.fabtoolbar.FabToolbar>
 

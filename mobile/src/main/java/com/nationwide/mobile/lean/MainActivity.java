@@ -1,6 +1,5 @@
 package com.nationwide.mobile.lean;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -9,10 +8,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.github.alexkolpa.fabtoolbar.FabToolbar;
+
 
 public class MainActivity extends ActionBarActivity {
 
     private Alarm alarm;
+    private FabToolbar fabToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +25,8 @@ public class MainActivity extends ActionBarActivity {
         clockIn.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "State is "+fabToolbar.getState(), Toast.LENGTH_SHORT).show();
+/*
                 if(alarm != null) {
                     alarm.SetAlarm(getApplicationContext());
                 }else{
@@ -32,6 +36,16 @@ public class MainActivity extends ActionBarActivity {
                 Intent intent = new Intent(getApplicationContext(), TimeManagement.class);
                 startActivity(intent);
 
+*/
+            }
+        });
+
+        fabToolbar = ((FabToolbar) findViewById(R.id.fab_toolbar));
+        findViewById(R.id.attach).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               Toast.makeText(getApplicationContext(), "You clicked the button", Toast.LENGTH_SHORT).show();
+                fabToolbar.hide();
             }
         });
     }
@@ -39,6 +53,16 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onStart() {
         super.onStart();
+    }
+
+    @Override
+    public void onBackPressed(){
+        if(fabToolbar.getState() == 1){
+            fabToolbar.hide();
+        }
+        else{
+            finish();
+        }
     }
 
     @Override
