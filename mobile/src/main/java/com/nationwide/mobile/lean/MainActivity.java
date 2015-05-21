@@ -45,9 +45,12 @@ public class MainActivity extends ActionBarActivity {
         });*/
 
         fabToolbar = ((FabToolbar) findViewById(R.id.fab_toolbar));
-        findViewById(R.id.attach).setOnClickListener(v -> {
-           Toast.makeText(getApplicationContext(), "You clicked the button", Toast.LENGTH_SHORT).show();
-            fabToolbar.hide();
+        findViewById(R.id.attach).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               Toast.makeText(getApplicationContext(), "You clicked the button", Toast.LENGTH_SHORT).show();
+                fabToolbar.hide();
+            }
         });
     }
 
