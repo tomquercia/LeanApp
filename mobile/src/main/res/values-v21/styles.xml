@@ -4,7 +4,7 @@
         <!-- Set AppCompat’s color theming attrs -->
         <item name="android:colorPrimary">@color/nw_blue</item>
         <item name="android:colorPrimaryDark">@color/nw_darkblue</item>
-        <item name="android:textColor">@color/white</item>
+        <item name="android:textColorPrimary">@color/white</item>
         <!-- Other attributes -->
     </style>
 </resources>
