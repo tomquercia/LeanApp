@@ -15,6 +15,15 @@
     <item name="leanshadow" type="color">#FFE60B04</item>
     <item name="white" type="color">#FFFFFF</item>
 
+    <item name="nw_blue" type="color">#FF1C57A5</item>
+    <item name="nw_darkblue" type="color">#FF002B45</item>
+    <item name="nw_lightblue" type="color">#FF00B2A9</item>
+    <item name="nw_green" type="color">#FF7AB800</item>
+    <item name="nw_darkgreen" type="color">#FF416812</item>
+    <item name="nw_red" type="color">#FFB71234</item>
+    <item name="nw_darkred" type="color">#FF983222</item>
+    <item name="nw_yellow" type="color">#FFFDA01A</item>
+
     <integer-array name="androidcolors">
         <item>@color/blue</item>
         <item>@color/purple</item>

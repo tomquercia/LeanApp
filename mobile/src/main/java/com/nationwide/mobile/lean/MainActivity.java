@@ -1,6 +1,8 @@
 package com.nationwide.mobile.lean;
 
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,7 +23,9 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         alarm = new Alarm();
-        Button clockIn = (Button) findViewById(R.id.button_check_in);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.nw_blue)));
+/*        Button clockIn = (Button) findViewById(R.id.button_check_in);
         clockIn.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -36,17 +40,14 @@ public class MainActivity extends ActionBarActivity {
                 Intent intent = new Intent(getApplicationContext(), TimeManagement.class);
                 startActivity(intent);
 
-*/
+/*
             }
-        });
+        });*/
 
         fabToolbar = ((FabToolbar) findViewById(R.id.fab_toolbar));
-        findViewById(R.id.attach).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               Toast.makeText(getApplicationContext(), "You clicked the button", Toast.LENGTH_SHORT).show();
-                fabToolbar.hide();
-            }
+        findViewById(R.id.attach).setOnClickListener(v -> {
+           Toast.makeText(getApplicationContext(), "You clicked the button", Toast.LENGTH_SHORT).show();
+            fabToolbar.hide();
         });
     }
 

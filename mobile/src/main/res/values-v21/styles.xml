@@ -2,8 +2,8 @@
 <resources>
     <style name="LeanTheme" parent="Theme.AppCompat.Light">
         <!-- Set AppCompat’s color theming attrs -->
-        <item name="colorPrimary">@color/blue</item>
-        <item name="colorPrimaryDark">@color/darkblue</item>
+        <item name="android:colorPrimary">@color/nw_blue</item>
+        <item name="android:colorPrimaryDark">@color/nw_darkblue</item>
         <!-- Other attributes -->
     </style>
 </resources>

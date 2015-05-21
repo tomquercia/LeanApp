@@ -15,30 +15,31 @@
         android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity"
         android:orientation="vertical"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        >
+        android:layout_height="fill_parent">
 
-    <TextView android:text="@string/clock_in" android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/clock_in"
-        android:layout_gravity="center"
-        android:textSize="40sp"
-        android:textStyle="bold"
-        android:layout_marginTop="60dp"
-        android:textColor="#ff000000" />
+        <TextView android:text="@string/clock_in" android:layout_width="287dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/clock_in"
+            android:layout_gravity="center"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            android:layout_marginTop="60dp"
+            android:textColor="#ff000000"
+            android:alpha=".87"
+            android:singleLine="false"
+            android:gravity="center" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/start_alerts"
-        android:id="@+id/button_check_in"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="100dp"
-        android:background="@color/leanred"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:padding="20dp" />
+        <TextView
+            android:layout_width="255dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/clock_in2"
+            android:id="@+id/textView"
+            android:textColor="#FF000000"
+            android:alpha=".57"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:textSize="25sp" />
 
     </LinearLayout>
 
@@ -49,6 +50,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
+        tb:tb_color="@color/nw_green"
         tb:tb_button_gravity="end"
         tb:tb_container_gravity="center"
         >
@@ -57,7 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <TextView
-                android:text="@string/clock_in"
+                android:text="@string/clock_in3"
                 android:layout_width="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
