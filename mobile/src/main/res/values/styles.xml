@@ -1,7 +1,8 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="LeanTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="LeanTheme" parent="Base.Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:textColor">@color/white</item>
         <!-- Customize your theme here. -->
     </style>
 

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="LeanTheme" parent="Theme.AppCompat.Light">
+    <style name="LeanTheme" parent="Base.Theme.AppCompat.Light">
         <!-- Set AppCompat’s color theming attrs -->
         <item name="android:colorPrimary">@color/nw_blue</item>
         <item name="android:colorPrimaryDark">@color/nw_darkblue</item>
+        <item name="android:textColor">@color/white</item>
         <!-- Other attributes -->
     </style>
 </resources>
