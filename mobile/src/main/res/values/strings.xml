@@ -13,5 +13,7 @@
     <string name="title_activity_time_management">TimeManagement</string>
     <string name="temp_time">Your time goes here!</string>
     <string name="title_activity_temp">TempActivity</string>
+    <string name="navigation_drawer_open">open drawer</string>
+    <string name="navigation_drawer_close">close drawer</string>
 
 </resources>

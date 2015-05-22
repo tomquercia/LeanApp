@@ -28,6 +28,7 @@ public class FabToolbar extends RevealFrameLayout {
 	private int animationDuration = DEFAULT_ANIMATION_DURATION;
 	private OnClickListener clickListener;
 	private int state = 0;
+	private String buttonColor;
 
 	public FabToolbar(Context context) {
 		super(context);
