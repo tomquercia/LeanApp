@@ -23,7 +23,7 @@ import com.google.android.gms.analytics.Tracker;
 
 public class MainActivity extends ActionBarActivity {
 
-    String TITLES[] = {"Home","Events","Mail","Shop","Travel"};
+    String TITLES[] = {"Edit My Profile","Notification Settings","Clock in/out"};
     int ICONS[] = {R.mipmap.ic_launcher,R.mipmap.ic_launcher,R.mipmap.ic_launcher,R.mipmap.ic_launcher,R.mipmap.ic_launcher};
 
     String NAME = "Tom Quercia";
