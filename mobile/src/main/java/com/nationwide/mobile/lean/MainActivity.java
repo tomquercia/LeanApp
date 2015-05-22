@@ -16,6 +16,9 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.github.alexkolpa.fabtoolbar.FabToolbar;
+import com.google.android.gms.analytics.GoogleAnalytics;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -106,6 +109,16 @@ public class MainActivity extends ActionBarActivity {
         findViewById(R.id.attach).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                GoogleAnalytics analytics = GoogleAnalytics.getInstance(getApplicationContext());
+                Tracker tracker = analytics.newTracker("UA-63001923-2");
+
+                tracker.setScreenName("main screen");
+
+                tracker.send(new HitBuilders.EventBuilder()
+                        .setCategory("UX")
+                        .setAction("click")
+                        .setLabel("Check in")
+                        .build());
                Toast.makeText(getApplicationContext(), "You clicked the button", Toast.LENGTH_SHORT).show();
                 fabToolbar.hide();
             }
