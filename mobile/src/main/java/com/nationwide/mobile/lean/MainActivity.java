@@ -26,9 +26,9 @@ public class MainActivity extends ActionBarActivity {
     String TITLES[] = {"Edit My Profile",
             "Notification Settings",
             "Clock in/out"};
-    int ICONS[] = {R.mipmap.ic_launcher,
-            R.mipmap.ic_launcher,
-            R.mipmap.ic_launcher};
+    int ICONS[] = {R.drawable.ic_profile,
+            R.drawable.ic_settings,
+            R.drawable.ic_clock_dark};
 
     String NAME = "Tom Quercia";
     String EMAIL = "tomquercia@gmail.com";
