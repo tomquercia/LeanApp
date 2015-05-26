@@ -1,24 +1,33 @@
 package com.nationwide.mobile.lean;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.InputType;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.github.alexkolpa.fabtoolbar.FabToolbar;
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesUtil;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -41,11 +50,26 @@ public class MainActivity extends ActionBarActivity {
     RecyclerView.LayoutManager mLayoutManager;
     DrawerLayout Drawer;
     ActionBarDrawerToggle mDrawerToggle;
+    public static GoogleAnalytics analytics;
+    public static Tracker tracker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+/*
+        if (GooglePlayServicesUtil.isGooglePlayServicesAvailable(this) == ConnectionResult.SUCCESS) {
+            analytics = GoogleAnalytics.getInstance(getApplicationContext());
+            analytics.setLocalDispatchPeriod(1800);
+
+            tracker = analytics.newTracker("UA-63001923-2"); // Replace with actual tracker/property Id
+            tracker.enableExceptionReporting(true);
+            tracker.enableAdvertisingIdCollection(true);
+            tracker.enableAutoActivityTracking(true);
+        }
+*/
+
         alarm = new Alarm();
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
@@ -110,10 +134,12 @@ public class MainActivity extends ActionBarActivity {
         });*/
 
         fabToolbar = ((FabToolbar) findViewById(R.id.fab_toolbar));
+        fabToolbar.setColor(getResources().getColor(R.color.nw_green));
         findViewById(R.id.attach).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GoogleAnalytics analytics = GoogleAnalytics.getInstance(getApplicationContext());
+/*
+                GoogleAnalytics analytics = GoogleAnalytics.getInstance(MainActivity.this);
                 Tracker tracker = analytics.newTracker("UA-63001923-2");
 
                 tracker.setScreenName("main screen");
@@ -123,7 +149,83 @@ public class MainActivity extends ActionBarActivity {
                         .setAction("click")
                         .setLabel("Check in")
                         .build());
-               Toast.makeText(getApplicationContext(), "You clicked the button", Toast.LENGTH_SHORT).show();
+*/
+                Intent intent = new Intent(MainActivity.this, TimeManagement.class);
+                startActivity(intent);
+
+
+
+/*
+                LinearLayout linear= new LinearLayout(MainActivity.this);
+                linear.setOrientation(LinearLayout.VERTICAL);
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setTitle("Profile creation");
+
+// Set up the input
+                final EditText name = new EditText(getApplicationContext());
+                final EditText role = new EditText(getApplicationContext());
+                final EditText team = new EditText(getApplicationContext());
+                final EditText manager = new EditText(getApplicationContext());
+                final EditText city = new EditText(getApplicationContext());
+                final EditText floor = new EditText(getApplicationContext());
+// Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+                name.setInputType(InputType.TYPE_CLASS_TEXT);
+                name.setHint("Your Name");
+                name.setHintTextColor(getResources().getColor(R.color.nw_blue));
+                linear.addView(name);
+
+                role.setInputType(InputType.TYPE_CLASS_TEXT);
+                role.setHint("Your Role");
+                role.setHintTextColor(getResources().getColor(R.color.nw_blue));
+                linear.addView(role);
+
+                team.setInputType(InputType.TYPE_CLASS_TEXT);
+                team.setHint("Your Team");
+                team.setHintTextColor(getResources().getColor(R.color.nw_blue));
+                linear.addView(team);
+
+                manager.setInputType(InputType.TYPE_CLASS_TEXT);
+                manager.setHint("Your Manager");
+                manager.setHintTextColor(getResources().getColor(R.color.nw_blue));
+                linear.addView(manager);
+
+                city.setInputType(InputType.TYPE_CLASS_TEXT);
+                city.setHint("Your City");
+                city.setHintTextColor(getResources().getColor(R.color.nw_blue));
+                linear.addView(city);
+
+                floor.setInputType(InputType.TYPE_CLASS_NUMBER);
+                floor.setHint("Your Floor");
+                floor.setHintTextColor(getResources().getColor(R.color.nw_blue));
+                linear.addView(floor);
+
+                builder.setView(linear);
+
+// Set up the buttons
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(getApplicationContext(), name.getText().toString()
+                                        + role.getText().toString()
+                                        + team.getText().toString()
+                                        + manager.getText().toString()
+                                        + city.getText().toString()
+                                        + floor.getText().toString(),
+                                Toast.LENGTH_SHORT).show();
+                        //m_Text = input.getText().toString();
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                builder.show();
+*/
+
+                //Toast.makeText(getApplicationContext(), "You clicked the button", Toast.LENGTH_SHORT).show();
                 fabToolbar.hide();
             }
         });

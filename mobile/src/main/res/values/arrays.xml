@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="times">
+        <item>7:00 &#8211; 7:15 AM</item>
+        <item>7:15 &#8211; 7:30 AM</item>
+        <item>7:30 &#8211; 7:45 AM</item>
+        <item>7:45 &#8211; 8:00 AM</item>
+        <item>8:00 &#8211; 8:15 AM</item>
+        <item>8:15 &#8211; 8:30 AM</item>
+        <item>8:30 &#8211; 8:45 AM</item>
+        <item>8:45 &#8211; 9:00 AM</item>
+        <item>9:00 &#8211; 9:15 AM</item>
+        <item>9:15 &#8211; 9:30 AM</item>
+        <item>9:30 &#8211; 9:45 AM</item>
+        <item>9:45 &#8211; 10:00 AM</item>
+        <item>10:00 &#8211; 10:15 AM</item>
+        <item>10:15 &#8211; 10:30 AM</item>
+        <item>10:30 &#8211; 10:45 AM</item>
+        <item>10:45 &#8211; 11:00 AM</item>
+        <item>11:00 &#8211; 11:15 AM</item>
+        <item>11:15 &#8211; 11:30 AM</item>
+        <item>11:30 &#8211; 11:45 AM</item>
+        <item>11:45 &#8211; 12:00 PM</item>
+        <item>12:00 &#8211; 12:15 PM</item>
+        <item>12:15 &#8211; 12:30 PM</item>
+        <item>12:30 &#8211; 12:45 PM</item>
+        <item>12:45 &#8211; 1:00 PM</item>
+        <item>1:00 &#8211; 1:15 PM</item>
+        <item>1:15 &#8211; 1:30 PM</item>
+        <item>1:30 &#8211; 1:45 PM</item>
+        <item>2:00 &#8211; 2:15 PM</item>
+        <item>2:15 &#8211; 2:30 PM</item>
+        <item>2:30 &#8211; 2:45 PM</item>
+        <item>3:00 &#8211; 3:15 PM</item>
+        <item>3:15 &#8211; 3:30 PM</item>
+        <item>3:30 &#8211; 3:45 PM</item>
+        <item>4:00 &#8211; 4:15 PM</item>
+        <item>4:15 &#8211; 4:30 PM</item>
+        <item>4:30 &#8211; 4:45 PM</item>
+        <item>5:00 &#8211; 5:15 PM</item>
+        <item>5:15 &#8211; 5:30 PM</item>
+        <item>5:30 &#8211; 5:45 PM</item>
+        <item>6:00 &#8211; 6:15 PM</item>
+        <item>6:15 &#8211; 6:30 PM</item>
+        <item>6:30 &#8211; 6:45 PM</item>
+
+    </string-array>
+
+</resources>

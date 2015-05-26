@@ -13,7 +13,10 @@
     <item name="darkred" type="color">#FFCC0000</item>
     <item name="leanred" type="color">#FFFC0B04</item>
     <item name="leanshadow" type="color">#FFE60B04</item>
-    <item name="white" type="color">#FFFFFF</item>
+    <item name="white" type="color">#FFFFFFFF</item>
+    <item name="grey" type="color">#FFD6D6D6</item>
+    <item name="darkgrey" type="color">#FF757575</item>
+    <item name="black" type="color">#FF000000</item>
 
     <item name="nw_blue" type="color">#FF1C57A5</item>
     <item name="nw_darkblue" type="color">#FF002B45</item>

@@ -15,5 +15,6 @@
     <string name="title_activity_temp">TempActivity</string>
     <string name="navigation_drawer_open">open drawer</string>
     <string name="navigation_drawer_close">close drawer</string>
+    <string name="show_previous">Show Previous Times</string>
 
 </resources>
