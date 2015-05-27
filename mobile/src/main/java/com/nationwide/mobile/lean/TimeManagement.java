@@ -20,7 +20,9 @@ import android.widget.Toast;
 
 import com.github.alexkolpa.fabtoolbar.FabToolbar;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 
 
 public class TimeManagement extends ActionBarActivity {
@@ -56,6 +58,7 @@ public class TimeManagement extends ActionBarActivity {
         setContentView(R.layout.activity_time_management);
         alarm = new Alarm();
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        toolbar.setTitle(new SimpleDateFormat("EEEE, MMMM dd, yyyy").format(new Date()));
         setSupportActionBar(toolbar);
 
         HOURS = getResources().getStringArray(R.array.times);

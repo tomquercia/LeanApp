@@ -7,6 +7,7 @@
     <string name="clock_in">You haven\'t clocked in yet...</string>
     <string name="clock_in2">Start logging your time today by tapping the clock in button below!</string>
     <string name="clock_in3">Ready to clock in?</string>
+    <string name="clock_out">Ready to clock out?</string>
     <string name="work_day">Your work day!</string>
     <string name="start_alerts">Clock In!</string>
     <string name="stop_alerts">Clock Out!</string>
