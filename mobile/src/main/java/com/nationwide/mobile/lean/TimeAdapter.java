@@ -9,6 +9,8 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 /**
  * Created by querct1 on 5/26/2015.
  */
@@ -16,10 +18,12 @@ public class TimeAdapter extends BaseAdapter {
     private Context context;
     String[] hours;
     LayoutInflater inflater = null;
+    boolean white;
 
-    public TimeAdapter(Context context, String[] hours){
+    public TimeAdapter(Context context, String[] hours, boolean white){
         this.context=context;
         this.hours=hours;
+        this.white=white;
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         Log.d("Lean", "Adapter has been set");
     }
@@ -37,6 +41,12 @@ public class TimeAdapter extends BaseAdapter {
         }
 
         Log.d("Lean", "Iteration " + position);
+        TextView top = (TextView) listView.findViewById(R.id.textView_hour);
+        if(white){
+            top.setTextColor(context.getResources().getColor(R.color.white));
+        } else {
+            top.setTextColor(context.getResources().getColor(R.color.black));
+        }
         TextView textView1 = (TextView) listView.findViewById(R.id.textview_time1);
         TextView textView2 = (TextView) listView.findViewById(R.id.textview_time2);
         TextView textView3 = (TextView) listView.findViewById(R.id.textview_time3);

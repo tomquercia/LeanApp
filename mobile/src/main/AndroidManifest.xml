@@ -33,6 +33,7 @@
         <service android:name="com.google.android.gms.analytics.CampaignTrackingService" />
         <activity
             android:name=".MainActivity"
+            android:noHistory="true"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

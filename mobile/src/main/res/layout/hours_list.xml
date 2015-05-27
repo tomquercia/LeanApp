@@ -12,7 +12,7 @@
         android:paddingBottom="16sp"
         android:paddingTop="16sp"
         android:textColor="@color/black"
-        android:id="@+id/textView2" />
+        android:id="@+id/textView_hour" />
 
     <LinearLayout
         android:orientation="vertical"
@@ -29,14 +29,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/grey"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:paddingTop="30dp"
-                android:paddingBottom="30dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
                 android:layout_weight=".5"
-                android:layout_marginRight="5dp"
+                android:layout_marginRight="2dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginBottom="5dp">
+                android:layout_marginBottom="2dp">
                 <!--
                     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                         android:orientation="vertical"
@@ -52,40 +52,44 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="20sp"
+                        android:textSize="22sp"
                         android:text="12:00-12:15 AM"
                         android:textColor="@color/black"
-                        android:paddingBottom="10dp"
+                        android:paddingBottom="15dp"
                         android:id="@+id/textview_time1" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <RelativeLayout
+                        android:orientation="horizontal"
+                        android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:text="7 hr 55 min from now "
-                        android:textSize="10sp"
-                        android:textColor="@color/darkgrey"
-                        android:paddingTop="15dp"
-                        android:layout_below="@+id/textview_time1"
-                        android:layout_toLeftOf="@+id/button1"
-                        android:id="@+id/textview_time_until1" />
+                        android:id="@+id/bottom_half"
+                        android:layout_below="@+id/textview_time1">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="7 hr 55 min from now "
+                            android:textSize="15sp"
+                            android:textColor="@color/darkgrey"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerInParent="true"
+                            android:id="@+id/textview_time_until1"
+                            android:layout_gravity="center" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=">"
+                            android:id="@+id/button1"
+                            android:background="@color/grey"
+                            android:textColor="@color/nw_yellow"
+                            android:layout_alignParentRight="true"
+                            android:textStyle="bold"
+                            android:textSize="20sp"
+                            android:layout_gravity="center" />
+                    </RelativeLayout>
 
 
-
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=">"
-                        android:layout_below="@+id/textview_time1"
-                        android:layout_alignParentRight="true"
-                        android:id="@+id/button1"
-                        android:background="@color/grey"
-                        android:textColor="@color/nw_yellow"
-                        android:paddingLeft="20dp"
-                        android:paddingTop="10dp"
-                        android:paddingRight="20dp"
-                        android:textSize="20sp"
-                        android:layout_gravity="center_vertical|bottom" />
                 </RelativeLayout>
                 <!--   </LinearLayout>-->
             </LinearLayout>
@@ -95,14 +99,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/grey"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:paddingTop="30dp"
-                android:paddingBottom="30dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
                 android:layout_weight=".5"
-                android:layout_marginLeft="5dp"
+                android:layout_marginLeft="2dp"
                 android:layout_marginRight="10dp"
-                android:layout_marginBottom="5dp">
+                android:layout_marginBottom="2dp">
                 <!--
                     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                         android:orientation="vertical"
@@ -118,40 +122,44 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="20sp"
+                        android:textSize="22sp"
                         android:text="12:00-12:15 AM"
                         android:textColor="@color/black"
-                        android:paddingBottom="10dp"
+                        android:paddingBottom="15dp"
                         android:id="@+id/textview_time2" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <RelativeLayout
+                        android:orientation="horizontal"
+                        android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:text="7 hr 55 min from now "
-                        android:textSize="10sp"
-                        android:textColor="@color/darkgrey"
-                        android:layout_toLeftOf="@+id/button2"
-                        android:paddingTop="15dp"
-                        android:layout_below="@+id/textview_time2"
-                        android:id="@+id/textview_time_until2" />
+                        android:id="@+id/bottom_half2"
+                        android:layout_below="@+id/textview_time2">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="7 hr 55 min from now "
+                            android:textSize="15sp"
+                            android:textColor="@color/darkgrey"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerInParent="true"
+                            android:id="@+id/textview_time_until2"
+                            android:layout_gravity="center" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=">"
+                            android:id="@+id/button2"
+                            android:background="@color/grey"
+                            android:textColor="@color/nw_yellow"
+                            android:layout_alignParentRight="true"
+                            android:textStyle="bold"
+                            android:textSize="20sp"
+                            android:layout_gravity="center" />
+                    </RelativeLayout>
 
 
-
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=">"
-                        android:layout_below="@+id/textview_time2"
-                        android:layout_alignParentRight="true"
-                        android:id="@+id/button2"
-                        android:background="@color/grey"
-                        android:textColor="@color/nw_yellow"
-                        android:paddingLeft="20dp"
-                        android:paddingTop="10dp"
-                        android:paddingRight="20dp"
-                        android:textSize="20sp"
-                        android:layout_gravity="center_vertical|bottom" />
                 </RelativeLayout>
                 <!--   </LinearLayout>-->
             </LinearLayout>
@@ -172,15 +180,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/grey"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:paddingTop="30dp"
-                android:paddingBottom="30dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
                 android:layout_weight=".5"
-                android:layout_marginRight="5dp"
+                android:layout_marginRight="2dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginBottom="0dp"
-                android:layout_marginTop="5dp">
+                android:layout_marginTop="2dp">
                 <!--
                     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                         android:orientation="vertical"
@@ -196,40 +204,44 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="20sp"
+                        android:textSize="22sp"
                         android:text="12:00-12:15 AM"
                         android:textColor="@color/black"
-                        android:paddingBottom="10dp"
+                        android:paddingBottom="15dp"
                         android:id="@+id/textview_time3" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <RelativeLayout
+                        android:orientation="horizontal"
+                        android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:text="7 hr 55 min from now "
-                        android:textSize="10sp"
-                        android:textColor="@color/darkgrey"
-                        android:paddingTop="15dp"
-                        android:layout_below="@+id/textview_time3"
-                        android:layout_toLeftOf="@+id/button3"
-                        android:id="@+id/textview_time_until3" />
+                        android:id="@+id/bottom_half3"
+                        android:layout_below="@+id/textview_time3">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="7 hr 55 min from now "
+                            android:textSize="15sp"
+                            android:textColor="@color/darkgrey"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerInParent="true"
+                            android:id="@+id/textview_time_until3"
+                            android:layout_gravity="center" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=">"
+                            android:id="@+id/button3"
+                            android:background="@color/grey"
+                            android:textColor="@color/nw_yellow"
+                            android:textStyle="bold"
+                            android:layout_alignParentRight="true"
+                            android:textSize="20sp"
+                            android:layout_gravity="center" />
+                    </RelativeLayout>
 
 
-
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=">"
-                        android:layout_below="@+id/textview_time3"
-                        android:layout_alignParentRight="true"
-                        android:id="@+id/button3"
-                        android:background="@color/grey"
-                        android:textColor="@color/nw_yellow"
-                        android:paddingLeft="20dp"
-                        android:paddingTop="10dp"
-                        android:paddingRight="20dp"
-                        android:textSize="20sp"
-                        android:layout_gravity="center_vertical|bottom" />
                 </RelativeLayout>
                 <!--   </LinearLayout>-->
             </LinearLayout>
@@ -239,15 +251,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/grey"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:paddingTop="30dp"
-                android:paddingBottom="30dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
                 android:layout_weight=".5"
-                android:layout_marginLeft="5dp"
+                android:layout_marginLeft="2dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="0dp"
-                android:layout_marginTop="5dp">
+                android:layout_marginTop="2dp">
                 <!--
                     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                         android:orientation="vertical"
@@ -263,41 +275,46 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="20sp"
+                        android:textSize="22sp"
                         android:text="12:00-12:15 AM"
                         android:textColor="@color/black"
-                        android:paddingBottom="10dp"
+                        android:paddingBottom="15dp"
                         android:id="@+id/textview_time4" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <RelativeLayout
+                        android:orientation="horizontal"
+                        android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:text="7 hr 55 min from now "
-                        android:textSize="10sp"
-                        android:textColor="@color/darkgrey"
-                        android:layout_toLeftOf="@+id/button4"
-                        android:paddingTop="15dp"
-                        android:layout_below="@+id/textview_time4"
-                        android:id="@+id/textview_time_until" />
+                        android:id="@+id/bottom_half4"
+                        android:layout_below="@+id/textview_time4">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="7 hr 55 min from now "
+                            android:textSize="15sp"
+                            android:textColor="@color/darkgrey"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerInParent="true"
+                            android:id="@+id/textview_time_until4"
+                            android:layout_gravity="center" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=">"
+                            android:id="@+id/button4"
+                            android:background="@color/grey"
+                            android:textColor="@color/nw_yellow"
+                            android:layout_alignParentRight="true"
+                            android:textStyle="bold"
+                            android:textSize="20sp"
+                            android:layout_gravity="center" />
+                    </RelativeLayout>
 
 
-
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=">"
-                        android:layout_below="@+id/textview_time4"
-                        android:layout_alignParentRight="true"
-                        android:id="@+id/button4"
-                        android:background="@color/grey"
-                        android:textColor="@color/nw_yellow"
-                        android:paddingLeft="20dp"
-                        android:paddingTop="10dp"
-                        android:paddingRight="20dp"
-                        android:textSize="20sp"
-                        android:layout_gravity="center_vertical|bottom" />
                 </RelativeLayout>
+
                 <!--   </LinearLayout>-->
             </LinearLayout>
 

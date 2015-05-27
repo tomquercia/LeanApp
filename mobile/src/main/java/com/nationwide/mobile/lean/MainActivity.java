@@ -20,6 +20,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.alexkolpa.fabtoolbar.FabToolbar;
@@ -135,6 +136,8 @@ public class MainActivity extends ActionBarActivity {
 
         fabToolbar = ((FabToolbar) findViewById(R.id.fab_toolbar));
         fabToolbar.setColor(getResources().getColor(R.color.nw_green));
+        TextView title = (TextView) findViewById(R.id.go);
+        title.setText(getResources().getString(R.string.clock_in3));
         findViewById(R.id.attach).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

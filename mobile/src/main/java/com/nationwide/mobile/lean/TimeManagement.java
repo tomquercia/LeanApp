@@ -15,9 +15,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.alexkolpa.fabtoolbar.FabToolbar;
+
+import java.util.Arrays;
 
 
 public class TimeManagement extends ActionBarActivity {
@@ -41,6 +44,8 @@ public class TimeManagement extends ActionBarActivity {
     DrawerLayout Drawer;
     ActionBarDrawerToggle mDrawerToggle;
     ListView listView;
+    ListView hiddenView;
+    int enabled = 0;
     String[] HOURS = new String[]{
       "9:00", "9:15", "9:30", "9:45", "10:00", "10:15", "10:30", "10:45", "11:00", "11:15", "11:30", "11:45", "12:00"
     };
@@ -56,7 +61,25 @@ public class TimeManagement extends ActionBarActivity {
         HOURS = getResources().getStringArray(R.array.times);
 
         listView = (ListView) findViewById(R.id.listView_future);
-        listView.setAdapter(new TimeAdapter(this, HOURS));
+        listView.setAdapter(new TimeAdapter(this, Arrays.copyOfRange(HOURS,HOURS.length/2, HOURS.length), false));
+
+        hiddenView = (ListView)findViewById(R.id.listView_previous);
+        hiddenView.setAdapter(new TimeAdapter(this, Arrays.copyOfRange(HOURS, 0, HOURS.length / 2 - 1), true));
+
+        Button showPast = (Button) findViewById(R.id.button_previous_times);
+        showPast.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(enabled == 0) {
+                    hiddenView.setVisibility(View.VISIBLE);
+                    enabled = 1;
+                }
+                else{
+                    hiddenView.setVisibility(View.GONE);
+                    enabled=0;
+                }
+            }
+        });
         Log.d("Lean", "Adapter set");
 
 
@@ -116,40 +139,19 @@ public class TimeManagement extends ActionBarActivity {
 
         fabToolbar = ((FabToolbar) findViewById(R.id.fab_toolbar));
         fabToolbar.setColor(getResources().getColor(R.color.nw_red));
+        TextView title = (TextView) findViewById(R.id.go);
+        title.setText(getResources().getString(R.string.clock_out));
         fabToolbar.attachToListView(listView);
         findViewById(R.id.attach).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-/*                Intent intent = new Intent(TimeManagement.this, TimeManagement.class);
-                startActivity(intent);*/
+                Intent intent = new Intent(TimeManagement.this, MainActivity.class);
+                startActivity(intent);
                 fabToolbar.hide();
                 finish();
             }
         });
 
-    }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_time_management, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     @Override
