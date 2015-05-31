@@ -1,6 +1,7 @@
 package com.nationwide.mobile.lean;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,6 +40,40 @@ public class TimeAdapter extends BaseAdapter {
         else{
             listView = (View)convertView;
         }
+
+
+        View boxView1 = listView.findViewById(R.id.box1);
+        boxView1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, TasksActivity.class);
+                context.startActivity(intent);
+            }
+        });
+        View boxView2 = listView.findViewById(R.id.box2);
+        boxView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, TasksActivity.class);
+                context.startActivity(intent);
+            }
+        });
+        View boxView3 = listView.findViewById(R.id.box3);
+        boxView3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, TasksActivity.class);
+                context.startActivity(intent);
+            }
+        });
+        View boxView4 = listView.findViewById(R.id.box4);
+        boxView4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, TasksActivity.class);
+                context.startActivity(intent);
+            }
+        });
 
         Log.d("Lean", "Iteration " + position);
         TextView top = (TextView) listView.findViewById(R.id.textView_hour);

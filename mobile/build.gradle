@@ -34,5 +34,6 @@ dependencies {
     compile 'com.android.support:appcompat-v7:22.2.0'
     compile 'com.google.android.gms:play-services:7.5.0'
     compile 'de.hdodenhof:circleimageview:1.2.1'
+    compile 'com.google.code.gson:gson:2.3'
     compile project(':library')
 }

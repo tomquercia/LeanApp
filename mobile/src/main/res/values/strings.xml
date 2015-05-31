@@ -17,5 +17,7 @@
     <string name="navigation_drawer_open">open drawer</string>
     <string name="navigation_drawer_close">close drawer</string>
     <string name="show_previous">Show Previous Times</string>
+    <string name="title_activity_tasks">TasksActivity</string>
+    <string name="action_save">Save</string>
 
 </resources>
