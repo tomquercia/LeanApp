@@ -33,16 +33,24 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent">
 
+            <LinearLayout
+                android:paddingBottom="0dp"
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:id="@+id/times_drawer"
+                android:layout_height="wrap_content">
+                    <ListView
+                        android:layout_width="fill_parent"
+                        android:layout_height="300dp"
+                        android:background="@color/nw_darkgreen"
+                        android:visibility="gone"
+                        android:dividerHeight="0dp"
+                        android:divider="@null"
+                        android:id="@+id/listView_previous" />
 
-                <ListView
-                    android:layout_width="fill_parent"
-                    android:layout_height="300dp"
-                    android:background="@color/nw_darkgreen"
-                    android:visibility="gone"
-                    android:dividerHeight="0dp"
-                    android:divider="@null"
-                    android:id="@+id/listView_previous" />
 
+
+                </LinearLayout>
                 <Button
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
