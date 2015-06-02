@@ -17,6 +17,8 @@
     <item name="grey" type="color">#FFD6D6D6</item>
     <item name="darkgrey" type="color">#FF757575</item>
     <item name="black" type="color">#FF000000</item>
+    <item name="black_text" type="color">#DD000000</item>
+    <item name="header_black" type="color">#45000000</item>
 
     <item name="nw_blue" type="color">#FF1C57A5</item>
     <item name="nw_darkblue" type="color">#FF002B45</item>

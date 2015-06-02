@@ -154,6 +154,7 @@ public class TimeManagement extends ActionBarActivity {
         findViewById(R.id.attach).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                alarm.CancelAlarm(getApplicationContext());
                 Intent intent = new Intent(TimeManagement.this, MainActivity.class);
                 startActivity(intent);
                 fabToolbar.hide();

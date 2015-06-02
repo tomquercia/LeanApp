@@ -153,6 +153,7 @@ public class MainActivity extends ActionBarActivity {
                         .setLabel("Check in")
                         .build());
 */
+                alarm.SetAlarm(getApplicationContext());
                 Intent intent = new Intent(MainActivity.this, TimeManagement.class);
                 startActivity(intent);
 
