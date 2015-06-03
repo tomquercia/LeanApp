@@ -18,6 +18,7 @@
     <item name="lightgrey" type="color">#55D6D6D6</item>
     <item name="darkgrey" type="color">#FF757575</item>
     <item name="black" type="color">#FF000000</item>
+    <item name="black_87" type="color">#FF292929</item>
     <item name="black_text" type="color">#DD000000</item>
     <item name="header_black" type="color">#45000000</item>
 

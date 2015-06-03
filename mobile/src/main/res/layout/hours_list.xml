@@ -7,11 +7,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="9:00 - 10:00 AM"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:paddingLeft="20sp"
         android:paddingBottom="16sp"
         android:paddingTop="16sp"
-        android:textColor="@color/black"
+        android:textColor="@color/darkgrey"
         android:id="@+id/textView_hour" />
 
     <LinearLayout
@@ -53,9 +53,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="22sp"
+                        android:textSize="20sp"
                         android:text="12:00-12:15 AM"
-                        android:textColor="@color/black"
+                        android:textColor="@color/black_87"
                         android:paddingBottom="15dp"
                         android:id="@+id/textview_time1" />
 
@@ -70,7 +70,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="7 hr 55 min from now "
-                            android:textSize="15sp"
+                            android:textSize="12sp"
                             android:textColor="@color/darkgrey"
                             android:layout_alignParentLeft="true"
                             android:layout_centerInParent="true"
@@ -87,8 +87,8 @@
                             android:layout_toEndOf="@+id/textview_time_until1"
                             android:scaleType="fitEnd"
                             android:layout_alignParentTop="true"
-                            android:paddingTop="5dp"
-                            android:paddingBottom="5dp" />
+                            android:paddingTop="3dp"
+                            android:paddingBottom="3dp" />
 
                         <!--<TextView-->
                             <!--android:layout_width="wrap_content"-->
@@ -137,9 +137,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="22sp"
+                        android:textSize="20sp"
                         android:text="12:00-12:15 AM"
-                        android:textColor="@color/black"
+                        android:textColor="@color/black_87"
                         android:paddingBottom="15dp"
                         android:id="@+id/textview_time2" />
 
@@ -154,7 +154,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="7 hr 55 min from now "
-                            android:textSize="15sp"
+                            android:textSize="12sp"
                             android:textColor="@color/darkgrey"
                             android:layout_alignParentLeft="true"
                             android:layout_centerInParent="true"
@@ -171,8 +171,8 @@
                             android:layout_toEndOf="@+id/textview_time_until2"
                             android:scaleType="fitEnd"
                             android:layout_alignParentTop="true"
-                            android:paddingTop="5dp"
-                            android:paddingBottom="5dp"
+                            android:paddingTop="3dp"
+                            android:paddingBottom="3dp"
                             android:layout_alignParentEnd="false" />
 
                         <!--<TextView-->
@@ -234,9 +234,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="22sp"
+                        android:textSize="20sp"
                         android:text="12:00-12:15 AM"
-                        android:textColor="@color/black"
+                        android:textColor="@color/black_87"
                         android:paddingBottom="15dp"
                         android:id="@+id/textview_time3" />
 
@@ -251,7 +251,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="7 hr 55 min from now "
-                            android:textSize="15sp"
+                            android:textSize="12sp"
                             android:textColor="@color/darkgrey"
                             android:layout_alignParentLeft="true"
                             android:layout_centerInParent="true"
@@ -280,8 +280,8 @@
                             android:layout_toEndOf="@+id/textview_time_until3"
                             android:scaleType="fitEnd"
                             android:layout_alignParentTop="true"
-                            android:paddingTop="5dp"
-                            android:paddingBottom="5dp" />
+                            android:paddingTop="3dp"
+                            android:paddingBottom="3dp" />
                     </RelativeLayout>
 
 
@@ -319,9 +319,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="22sp"
+                        android:textSize="20sp"
                         android:text="12:00-12:15 AM"
-                        android:textColor="@color/black"
+                        android:textColor="@color/black_87"
                         android:paddingBottom="15dp"
                         android:id="@+id/textview_time4" />
 
@@ -336,7 +336,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="7 hr 55 min from now "
-                            android:textSize="15sp"
+                            android:textSize="12sp"
                             android:textColor="@color/darkgrey"
                             android:layout_alignParentLeft="true"
                             android:layout_centerInParent="true"
@@ -353,8 +353,8 @@
                             android:layout_toEndOf="@+id/textview_time_until4"
                             android:scaleType="fitEnd"
                             android:layout_alignParentTop="true"
-                            android:paddingTop="5dp"
-                            android:paddingBottom="5dp" />
+                            android:paddingTop="3dp"
+                            android:paddingBottom="3dp" />
 
                         <!--<TextView-->
                             <!--android:layout_width="wrap_content"-->
