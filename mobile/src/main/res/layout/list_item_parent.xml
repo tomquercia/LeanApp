@@ -14,8 +14,10 @@
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/list_item_text_view"
             style="?android:attr/preferenceStyle"
+            android:id="@+id/list_item_text_view"
+            android:textColor="@color/darkgrey"
+            android:textStyle="bold"
             android:textSize="15sp"
             android:paddingBottom="3dp"
             android:paddingTop="15dp"
@@ -28,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/list_item_text_view"
             android:layout_marginLeft="45dp"
-            android:textColor="#696969"
+            android:textColor="@color/darkgrey"
             android:textSize="12sp"
             android:paddingBottom="3dp"
             />

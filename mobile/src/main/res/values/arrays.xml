@@ -43,7 +43,22 @@
         <item>6:00 &#8211; 6:15 PM</item>
         <item>6:15 &#8211; 6:30 PM</item>
         <item>6:30 &#8211; 6:45 PM</item>
+        <item>6:45 &#8211; 7:00 PM</item>
+    </string-array>
 
+    <string-array name="full_hours">
+        <item>7:00 &#8211; 8:00 AM</item>
+        <item>8:00 &#8211; 9:00 AM</item>
+        <item>9:00 &#8211; 10:00 AM</item>
+        <item>10:00 &#8211; 11:00 AM</item>
+        <item>11:00 &#8211; 12:00 PM</item>
+        <item>12:00 &#8211; 1:00 PM</item>
+        <item>1:00 &#8211; 2:00 PM</item>
+        <item>2:00 &#8211; 3:00 PM</item>
+        <item>3:00 &#8211; 4:00 PM</item>
+        <item>4:00 &#8211; 5:00 PM</item>
+        <item>5:00 &#8211; 6:00 PM</item>
+        <item>6:00 &#8211; 7:00 PM</item>
     </string-array>
 
 </resources>

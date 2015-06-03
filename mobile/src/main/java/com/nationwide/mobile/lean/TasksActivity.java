@@ -57,6 +57,7 @@ public class TasksActivity extends ActionBarActivity {
                 View parentView = categoriesList.findViewWithTag(categories.get(groupPosition).name);
                 if (parentView != null) {
                     TextView sub = (TextView) parentView.findViewById(R.id.list_item_text_subscriptions);
+                    TextView parentText = (TextView) parentView.findViewById(R.id.list_item_text_view);
 
                     if (sub != null) {
                         Category category = categories.get(groupPosition);
@@ -65,9 +66,11 @@ public class TasksActivity extends ActionBarActivity {
                             category.selection.add(checkbox.getText().toString());
 
                             // sort list in alphabetical order
+                            parentText.setTextColor(getResources().getColor(R.color.nw_lightblue));
                             Collections.sort(category.selection, new CustomComparator());
                         } else {
                             // remove child category from parent's selection list
+                            parentText.setTextColor(getResources().getColor(R.color.darkgrey));
                             category.selection.remove(checkbox.getText().toString());
                         }
 

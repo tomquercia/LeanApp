@@ -15,6 +15,7 @@
     <item name="leanshadow" type="color">#FFE60B04</item>
     <item name="white" type="color">#FFFFFFFF</item>
     <item name="grey" type="color">#FFD6D6D6</item>
+    <item name="lightgrey" type="color">#55D6D6D6</item>
     <item name="darkgrey" type="color">#FF757575</item>
     <item name="black" type="color">#FF000000</item>
     <item name="black_text" type="color">#DD000000</item>
@@ -24,7 +25,9 @@
     <item name="nw_darkblue" type="color">#FF002B45</item>
     <item name="nw_lightblue" type="color">#FF00B2A9</item>
     <item name="nw_green" type="color">#FF7AB800</item>
+    <item name="nw_green_card" type="color">#AA416913</item>
     <item name="nw_darkgreen" type="color">#FF416812</item>
+    <item name="nw_green_bg" type="color">#FF5A980E</item>
     <item name="nw_red" type="color">#FFB71234</item>
     <item name="nw_darkred" type="color">#FF983222</item>
     <item name="nw_yellow" type="color">#FFFDA01A</item>

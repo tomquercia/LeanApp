@@ -11,10 +11,21 @@
         ></include>
 
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tool_bar"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:background="@color/nw_yellow"
+        android:id="@+id/helpbox"></RelativeLayout>
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/tool_bar"
+        android:layout_below="@+id/helpbox"
         >
         <RelativeLayout
             android:layout_width="match_parent"

@@ -88,9 +88,12 @@ public class ListAdapter extends BaseExpandableListAdapter {
         TextView sub = (TextView) view.findViewById(R.id.list_item_text_subscriptions);
 
         if(mParent.get(i).selection.size()>0) {
+            textView.setTextColor(view.getResources().getColor(R.color.nw_lightblue));
             sub.setText(mParent.get(i).selection.toString());
         }
         else {
+            textView.setTextColor(view.getResources().getColor(R.color.darkgrey));
+            textView.invalidate();
             sub.setText("");
         }
 

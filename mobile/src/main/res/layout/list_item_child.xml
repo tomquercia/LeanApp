@@ -14,6 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:drawableLeft="?android:attr/listChoiceIndicatorMultiple"
+        android:textColor="@color/grey"
         android:checked="false"
         android:gravity="center_vertical"
         android:padding="10dp"
