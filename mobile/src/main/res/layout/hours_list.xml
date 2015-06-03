@@ -77,17 +77,30 @@
                             android:id="@+id/textview_time_until1"
                             android:layout_gravity="center" />
 
-                        <TextView
+                        <ImageView
+                            android:src="@drawable/chevron"
+                            android:layout_alignParentRight="true"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text=">"
-                            android:id="@+id/button1"
-                            android:background="@color/grey"
-                            android:textColor="@color/nw_yellow"
-                            android:layout_alignParentRight="true"
-                            android:textStyle="bold"
-                            android:textSize="20sp"
-                            android:layout_gravity="center" />
+                            android:id="@+id/imageView1"
+                            android:layout_alignBottom="@+id/textview_time_until1"
+                            android:layout_toEndOf="@+id/textview_time_until1"
+                            android:scaleType="fitEnd"
+                            android:layout_alignParentTop="true"
+                            android:paddingTop="5dp"
+                            android:paddingBottom="5dp" />
+
+                        <!--<TextView-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:text=">"-->
+                            <!--android:id="@+id/button1"-->
+                            <!--android:background="@color/grey"-->
+                            <!--android:textColor="@color/nw_yellow"-->
+                            <!--android:layout_alignParentRight="true"-->
+                            <!--android:textStyle="bold"-->
+                            <!--android:textSize="20sp"-->
+                            <!--android:layout_gravity="center" />-->
                     </RelativeLayout>
 
 
@@ -148,17 +161,31 @@
                             android:id="@+id/textview_time_until2"
                             android:layout_gravity="center" />
 
-                        <TextView
+                        <ImageView
+                            android:src="@drawable/chevron"
+                            android:layout_alignParentRight="true"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text=">"
-                            android:id="@+id/button2"
-                            android:background="@color/grey"
-                            android:textColor="@color/nw_yellow"
-                            android:layout_alignParentRight="true"
-                            android:textStyle="bold"
-                            android:textSize="20sp"
-                            android:layout_gravity="center" />
+                            android:id="@+id/imageView2"
+                            android:layout_alignBottom="@+id/textview_time_until2"
+                            android:layout_toEndOf="@+id/textview_time_until2"
+                            android:scaleType="fitEnd"
+                            android:layout_alignParentTop="true"
+                            android:paddingTop="5dp"
+                            android:paddingBottom="5dp"
+                            android:layout_alignParentEnd="false" />
+
+                        <!--<TextView-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:text=">"-->
+                            <!--android:id="@+id/button2"-->
+                            <!--android:background="@color/grey"-->
+                            <!--android:textColor="@color/nw_yellow"-->
+                            <!--android:layout_alignParentRight="true"-->
+                            <!--android:textStyle="bold"-->
+                            <!--android:textSize="20sp"-->
+                            <!--android:layout_gravity="center" />-->
                     </RelativeLayout>
 
 
@@ -231,17 +258,30 @@
                             android:id="@+id/textview_time_until3"
                             android:layout_gravity="center" />
 
-                        <TextView
+                        <!--<TextView-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:text=">"-->
+                            <!--android:id="@+id/button3"-->
+                            <!--android:background="@color/grey"-->
+                            <!--android:textColor="@color/nw_yellow"-->
+                            <!--android:textStyle="bold"-->
+                            <!--android:layout_alignParentRight="true"-->
+                            <!--android:textSize="20sp"-->
+                            <!--android:layout_gravity="center" />-->
+
+                        <ImageView
+                            android:src="@drawable/chevron"
+                            android:layout_alignParentRight="true"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text=">"
-                            android:id="@+id/button3"
-                            android:background="@color/grey"
-                            android:textColor="@color/nw_yellow"
-                            android:textStyle="bold"
-                            android:layout_alignParentRight="true"
-                            android:textSize="20sp"
-                            android:layout_gravity="center" />
+                            android:id="@+id/imageView3"
+                            android:layout_alignBottom="@+id/textview_time_until3"
+                            android:layout_toEndOf="@+id/textview_time_until3"
+                            android:scaleType="fitEnd"
+                            android:layout_alignParentTop="true"
+                            android:paddingTop="5dp"
+                            android:paddingBottom="5dp" />
                     </RelativeLayout>
 
 
@@ -303,17 +343,30 @@
                             android:id="@+id/textview_time_until4"
                             android:layout_gravity="center" />
 
-                        <TextView
+                        <ImageView
+                            android:src="@drawable/chevron"
+                            android:layout_alignParentRight="true"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text=">"
-                            android:id="@+id/button4"
-                            android:background="@color/grey"
-                            android:textColor="@color/nw_yellow"
-                            android:layout_alignParentRight="true"
-                            android:textStyle="bold"
-                            android:textSize="20sp"
-                            android:layout_gravity="center" />
+                            android:id="@+id/imageView4"
+                            android:layout_alignBottom="@+id/textview_time_until4"
+                            android:layout_toEndOf="@+id/textview_time_until4"
+                            android:scaleType="fitEnd"
+                            android:layout_alignParentTop="true"
+                            android:paddingTop="5dp"
+                            android:paddingBottom="5dp" />
+
+                        <!--<TextView-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:text=">"-->
+                            <!--android:id="@+id/button4"-->
+                            <!--android:background="@color/grey"-->
+                            <!--android:textColor="@color/nw_yellow"-->
+                            <!--android:layout_alignParentRight="true"-->
+                            <!--android:textStyle="bold"-->
+                            <!--android:textSize="20sp"-->
+                            <!--android:layout_gravity="center" />-->
                     </RelativeLayout>
 
 
