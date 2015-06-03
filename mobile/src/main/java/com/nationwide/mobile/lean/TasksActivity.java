@@ -70,8 +70,11 @@ public class TasksActivity extends ActionBarActivity {
                             Collections.sort(category.selection, new CustomComparator());
                         } else {
                             // remove child category from parent's selection list
-                            parentText.setTextColor(getResources().getColor(R.color.darkgrey));
+
                             category.selection.remove(checkbox.getText().toString());
+                            if(category.selection.isEmpty()){
+                                parentText.setTextColor(getResources().getColor(R.color.darkgrey));
+                            }
                         }
 
                         // display selection list
