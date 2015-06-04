@@ -95,7 +95,7 @@ public class TimeAdapter extends BaseAdapter {
 
 
         if(white){
-            top.setTextColor(context.getResources().getColor(R.color.white));
+            top.setTextColor(context.getResources().getColor(R.color.white_67));
             boxView1.setBackgroundColor(context.getResources().getColor(R.color.nw_green_card));
             boxView2.setBackgroundColor(context.getResources().getColor(R.color.nw_green_card));
             boxView3.setBackgroundColor(context.getResources().getColor(R.color.nw_green_card));
