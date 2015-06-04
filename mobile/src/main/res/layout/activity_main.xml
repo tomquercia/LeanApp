@@ -83,8 +83,8 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/white"
                         android:id="@+id/go"
-                        android:textSize="32sp"
-                        android:layout_marginLeft="8dp"
+                        android:textSize="28sp"
+                        android:layout_marginLeft="20dp"
                         android:textStyle="bold" />
 
                     <ImageView
@@ -95,6 +95,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_check"
+                        android:alpha="1"
                         />
                 </RelativeLayout>
 

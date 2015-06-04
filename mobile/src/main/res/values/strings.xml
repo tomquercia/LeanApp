@@ -17,6 +17,7 @@
     <string name="navigation_drawer_open">open drawer</string>
     <string name="navigation_drawer_close">close drawer</string>
     <string name="show_previous">Show Previous Times</string>
+    <string name="hide_previous">Hide Previous Times</string>
     <string name="title_activity_launcher">LauncherActivity</string>
     <string name="title_activity_profile">Profile</string>
     <string name="create_profile">Create Your Profile</string>

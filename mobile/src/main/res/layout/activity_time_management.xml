@@ -88,8 +88,8 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/white"
                         android:id="@+id/go"
-                        android:textSize="32sp"
-                        android:layout_marginLeft="8dp"
+                        android:textSize="28sp"
+                        android:layout_marginLeft="20dp"
                         android:textStyle="bold" />
 
                     <ImageView

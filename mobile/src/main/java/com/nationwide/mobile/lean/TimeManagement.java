@@ -73,17 +73,19 @@ public class TimeManagement extends ActionBarActivity {
         hiddenView = (ListView)findViewById(R.id.listView_previous);
         hiddenView.setAdapter(new TimeAdapter(this, Arrays.copyOfRange(HOURS, 0, HOURS.length / 2 - 1), true));
 
-        Button showPast = (Button) findViewById(R.id.button_previous_times);
+        final Button showPast = (Button) findViewById(R.id.button_previous_times);
         showPast.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(enabled == 0) {
                     hiddenView.setVisibility(View.VISIBLE);
                     expand((LinearLayout)findViewById(R.id.times_drawer));
+                    showPast.setText(getResources().getString(R.string.hide_previous));
                     enabled = 1;
                 }
                 else{
                     collapse((LinearLayout)findViewById(R.id.times_drawer));
+                    showPast.setText(getResources().getString(R.string.show_previous));
                     //hiddenView.setVisibility(View.GONE);
                     enabled=0;
                 }
