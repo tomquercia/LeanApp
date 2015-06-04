@@ -109,7 +109,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         }
         else{
 
-            holder.profile.setImageResource(profile);           // Similarly we set the resources for header view
+            holder.profile.setImageResource(R.drawable.menu_icon);           // Similarly we set the resources for header view
             holder.Name.setText(name);
             holder.email.setText(email);
         }
