@@ -100,28 +100,28 @@ public class TimeAdapter extends BaseAdapter {
             boxView2.setBackgroundColor(context.getResources().getColor(R.color.nw_green_card));
             boxView3.setBackgroundColor(context.getResources().getColor(R.color.nw_green_card));
             boxView4.setBackgroundColor(context.getResources().getColor(R.color.nw_green_card));
-            textView1.setTextColor(context.getResources().getColor(R.color.white));
-            textView2.setTextColor(context.getResources().getColor(R.color.white));
-            textView3.setTextColor(context.getResources().getColor(R.color.white));
-            textView4.setTextColor(context.getResources().getColor(R.color.white));
-            bottomTextView1.setTextColor(context.getResources().getColor(R.color.lightgrey));
-            bottomTextView2.setTextColor(context.getResources().getColor(R.color.lightgrey));
-            bottomTextView3.setTextColor(context.getResources().getColor(R.color.lightgrey));
-            bottomTextView4.setTextColor(context.getResources().getColor(R.color.lightgrey));
+            textView1.setTextColor(context.getResources().getColor(R.color.white_87));
+            textView2.setTextColor(context.getResources().getColor(R.color.white_87));
+            textView3.setTextColor(context.getResources().getColor(R.color.white_87));
+            textView4.setTextColor(context.getResources().getColor(R.color.white_87));
+            bottomTextView1.setTextColor(context.getResources().getColor(R.color.white_54));
+            bottomTextView2.setTextColor(context.getResources().getColor(R.color.white_54));
+            bottomTextView3.setTextColor(context.getResources().getColor(R.color.white_54));
+            bottomTextView4.setTextColor(context.getResources().getColor(R.color.white_54));
         } else {
-            top.setTextColor(context.getResources().getColor(R.color.black));
+            top.setTextColor(context.getResources().getColor(R.color.black_67));
             boxView1.setBackgroundColor(context.getResources().getColor(R.color.grey));
             boxView2.setBackgroundColor(context.getResources().getColor(R.color.grey));
             boxView3.setBackgroundColor(context.getResources().getColor(R.color.grey));
             boxView4.setBackgroundColor(context.getResources().getColor(R.color.grey));
-            textView1.setTextColor(context.getResources().getColor(R.color.black));
-            textView2.setTextColor(context.getResources().getColor(R.color.black));
-            textView3.setTextColor(context.getResources().getColor(R.color.black));
-            textView4.setTextColor(context.getResources().getColor(R.color.black));
-            bottomTextView1.setTextColor(context.getResources().getColor(R.color.darkgrey));
-            bottomTextView2.setTextColor(context.getResources().getColor(R.color.darkgrey));
-            bottomTextView3.setTextColor(context.getResources().getColor(R.color.darkgrey));
-            bottomTextView4.setTextColor(context.getResources().getColor(R.color.darkgrey));
+            textView1.setTextColor(context.getResources().getColor(R.color.black_87));
+            textView2.setTextColor(context.getResources().getColor(R.color.black_87));
+            textView3.setTextColor(context.getResources().getColor(R.color.black_87));
+            textView4.setTextColor(context.getResources().getColor(R.color.black_87));
+            bottomTextView1.setTextColor(context.getResources().getColor(R.color.black_54));
+            bottomTextView2.setTextColor(context.getResources().getColor(R.color.black_54));
+            bottomTextView3.setTextColor(context.getResources().getColor(R.color.black_54));
+            bottomTextView4.setTextColor(context.getResources().getColor(R.color.black_54));
         }
 
         return listView;
