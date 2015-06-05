@@ -20,6 +20,7 @@
     <item name="grey" type="color">#FFD6D6D6</item>
     <item name="lightgrey" type="color">#55D6D6D6</item>
     <item name="darkgrey" type="color">#FF757575</item>
+    <item name="darkgrey_trans" type="color">#AA757575</item>
     <item name="black" type="color">#FF000000</item>
     <item name="black_87" type="color">#FF292929</item>
     <item name="black_67" type="color">#FF616161</item>

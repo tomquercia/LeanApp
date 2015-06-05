@@ -37,6 +37,7 @@ public class TasksActivity extends ActionBarActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         categoriesList = (ExpandableListView)findViewById(R.id.categories);
+        Category.context = this;
         categories = Category.getCategories();
         adapter = new ListAdapter(this,
                 categories, categoriesList);
@@ -70,7 +71,6 @@ public class TasksActivity extends ActionBarActivity {
                             Collections.sort(category.selection, new CustomComparator());
                         } else {
                             // remove child category from parent's selection list
-
                             category.selection.remove(checkbox.getText().toString());
                             if(category.selection.isEmpty()){
                                 parentText.setTextColor(getResources().getColor(R.color.darkgrey));

@@ -22,18 +22,23 @@ public class TimeAdapter extends BaseAdapter {
     String[] hours;
     LayoutInflater inflater = null;
     boolean white;
+    String[] fullHours;
 
-    public TimeAdapter(Context context, String[] hours, boolean white){
+    public TimeAdapter(Context context, String[] hours, String[] fullHours, boolean white){
         this.context=context;
         this.hours=hours;
         this.white=white;
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        this.fullHours = fullHours;
         Log.d("Lean", "Adapter has been set");
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View listView;
+        if(position > 0){
+            position = position*4;
+        }
 
         if(convertView == null){
             //get layout from hours_list.xml
@@ -89,9 +94,10 @@ public class TimeAdapter extends BaseAdapter {
         TextView bottomTextView4 = (TextView) listView.findViewById(R.id.textview_time_until4);
 
         textView1.setText(hours[position]);
-        textView2.setText(hours[position]);
-        textView3.setText(hours[position]);
-        textView4.setText(hours[position]);
+        textView2.setText(hours[position+1]);
+        textView3.setText(hours[position+2]);
+        textView4.setText(hours[position+3]);
+        top.setText(fullHours[position/4]);
 
 
         if(white){
@@ -129,7 +135,7 @@ public class TimeAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return hours.length;
+        return hours.length/4;
     }
 
     @Override

@@ -28,18 +28,23 @@
         <item>1:00 - 1:15 PM</item>
         <item>1:15 - 1:30 PM</item>
         <item>1:30 - 1:45 PM</item>
+        <item>1:45 - 2:00 PM</item>
         <item>2:00 - 2:15 PM</item>
         <item>2:15 - 2:30 PM</item>
         <item>2:30 - 2:45 PM</item>
+        <item>2:45 - 3:00 PM</item>
         <item>3:00 - 3:15 PM</item>
         <item>3:15 - 3:30 PM</item>
         <item>3:30 - 3:45 PM</item>
+        <item>3:45 - 4:00 PM</item>
         <item>4:00 - 4:15 PM</item>
         <item>4:15 - 4:30 PM</item>
         <item>4:30 - 4:45 PM</item>
+        <item>4:45 - 5:00 PM</item>
         <item>5:00 - 5:15 PM</item>
         <item>5:15 - 5:30 PM</item>
         <item>5:30 - 5:45 PM</item>
+        <item>5:45 - 6:00 PM</item>
         <item>6:00 - 6:15 PM</item>
         <item>6:15 - 6:30 PM</item>
         <item>6:30 - 6:45 PM</item>
@@ -60,5 +65,112 @@
         <item>5:00 - 6:00 PM</item>
         <item>6:00 - 7:00 PM</item>
     </string-array>
+
+
+    <string-array name="tasks">
+        <item>Build</item>
+        <item>Incident Management</item>
+        <item>Defect Management</item>
+        <item>Requests (enhancements, CQ issues, DR, etc)</item>
+        <item>Requirements</item>
+        <item>Item Testing</item>
+        <item>Release Testing</item>
+        <item>Release / config management</item>
+        <item>Resource Management</item>
+        <item>Miscellaneous</item>
+    </string-array>
+
+    <string-array name="build">
+        <item>Build related work (Build is &gt; 500hours of total team effort)</item>
+    </string-array>
+
+    <string-array name="incident_management">
+        <item>Attending incident related meeting(s)</item>
+        <item>Creating HP Service Center / CQ ticket</item>
+        <item>Solving P0-P4 incidents</item>
+        <item>Following up with others regarding an incident</item>
+        <item>Editing, reassigning, closing incident</item>
+        <item>Monitoring standard ticket queues, assigning resources </item>
+    </string-array>
+
+    <string-array name="defect_management">
+        <item>Attending defect related meeting (e.g., status, prioritization)</item>
+        <item>Creating, analyzing, recreating, estimating a defect</item>
+        <item>Following up with others regarding a defect</item>
+        <item>Coding, unit testing a defect</item>
+        <item>Merging code in the impacted release(s)</item>
+        <item>Updating defect, reassigning defect, closing defect</item>
+    </string-array>
+
+    <string-array name="requests">
+        <item>Attending request related meeting (e.g. prioritization)</item>
+        <item>Opening/editing/closing requests  (SC, CQ, Clarity, ITTL)</item>
+        <item>Following up with others regarding a request</item>
+        <item>Coding / unit testing requests</item>
+        <item>Coding / unit testing proactive maintenance / tech debt</item>
+        <item>Coding / unit testing on enhancements &lt;500 hours</item>
+        <item>Working on CQ ticket / issue</item>
+        <item>Working on regulatory, compliance, or audits</item>
+    </string-array>
+
+    <string-array name="requirements">
+        <item>Creating, updating, reviewing requirement documents</item>
+        <item>Data analysis</item>
+        <item>Requirements discussions, reviews</item>
+        <item>Manage requirements in RRC or other tool (RTC, etc)</item>
+    </string-array>
+
+    <string-array name="item_testing">
+        <item>Creating, managing, updating test plans</item>
+        <item>Creating, reviewing test scenarios</item>
+        <item>Designing/creating/reviewing test scripts (e.g., regression)</item>
+        <item>Creating automated test scripts</item>
+        <item>Executing testing (automated, manual, regression)</item>
+    </string-array>
+
+    <string-array name="release_testing">
+        <item>Creating, managing, updating test plans</item>
+        <item>Creating, reviewing test scenarios</item>
+        <item>Designing/creating/reviewing test scripts (e.g., regression)</item>
+        <item>Executing testing (automated, manual, regression)</item>
+        <item>Performing post release checkouts and testing</item>
+    </string-array>
+
+    <string-array name="release_config_management">
+        <item>Attending release related meeting (e.g., implementation)</item>
+        <item>Creating request for code move (e.g. ITTL, Harvest, ICR)</item>
+        <item>Creating or updating RFCs</item>
+        <item>Preparing / building environments (prod or test)</item>
+        <item>Preparing release documentation(implementation plans, webster, status etc.)</item>
+    </string-array>
+
+    <string-array name="resource_management">
+        <item>Capacity management (assigning resources, planning)</item>
+        <item>Follow-up with Portfolio team / PMs</item>
+        <item>Manage budget, project plans</item>
+    </string-array>
+
+    <string-array name="misc">
+        <item>Attending other types of meetings</item>
+        <item>Coaching sessions with team / manager</item>
+        <item>Communicating with 3rd party vendors / firms</item>
+        <item>Conducting or validating I&amp;O changes (upgrades, patches)</item>
+        <item>Conducting root cause analysis (formal session)</item>
+        <item>Creating status / metrics Reports</item>
+        <item>Data modeling</item>
+        <item>Monitoring / running batch jobs / flows</item>
+        <item>Supporting lean app maintenance activities (CFR, VSM)</item>
+        <item>Supporting other teams (ad hoc consulting)</item>
+        <item>Training, education, onboarding</item>
+        <item>Waiting on environments/flows to be ready</item>
+        <item>Working on disaster recovery</item>
+        <item>Working on walk-ups (phone, IMs)</item>
+        <item>Configuring hardware/software for customers</item>
+        <item>Troubleshooting hardware/software issue</item>
+        <item>Admin tasks (emails, timesheets, etc.)</item>
+        <item>Personal breaks, lunch, etc.</item>
+        <item>Anything else not captured above</item>
+    </string-array>
+
 
 </resources>

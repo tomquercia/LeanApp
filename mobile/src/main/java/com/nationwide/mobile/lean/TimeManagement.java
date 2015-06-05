@@ -55,6 +55,9 @@ public class TimeManagement extends ActionBarActivity {
     String[] HOURS = new String[]{
       "9:00", "9:15", "9:30", "9:45", "10:00", "10:15", "10:30", "10:45", "11:00", "11:15", "11:30", "11:45", "12:00"
     };
+    String[] FULLHOURS = new String[]{
+      "9:00", "10:00", "11:00", "12:00"
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,12 +69,13 @@ public class TimeManagement extends ActionBarActivity {
         setSupportActionBar(toolbar);
 
         HOURS = getResources().getStringArray(R.array.times);
+        FULLHOURS = getResources().getStringArray(R.array.full_hours);
 
         listView = (ListView) findViewById(R.id.listView_future);
-        listView.setAdapter(new TimeAdapter(this, Arrays.copyOfRange(HOURS,HOURS.length/2, HOURS.length), false));
+        listView.setAdapter(new TimeAdapter(this, Arrays.copyOfRange(HOURS,HOURS.length/2, HOURS.length), Arrays.copyOfRange(FULLHOURS, FULLHOURS.length/2, FULLHOURS.length), false));
 
         hiddenView = (ListView)findViewById(R.id.listView_previous);
-        hiddenView.setAdapter(new TimeAdapter(this, Arrays.copyOfRange(HOURS, 0, HOURS.length / 2 - 1), true));
+        hiddenView.setAdapter(new TimeAdapter(this, Arrays.copyOfRange(HOURS, 0, HOURS.length / 2), Arrays.copyOfRange(FULLHOURS, 0, FULLHOURS.length/2), true));
 
         final Button showPast = (Button) findViewById(R.id.button_previous_times);
         showPast.setOnClickListener(new View.OnClickListener() {
