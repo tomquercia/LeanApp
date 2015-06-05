@@ -9,8 +9,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
@@ -24,8 +26,10 @@ import android.widget.Toast;
 
 import com.github.alexkolpa.fabtoolbar.FabToolbar;
 
+import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Date;
 
 
@@ -70,11 +74,17 @@ public class TimeManagement extends ActionBarActivity {
         HOURS = getResources().getStringArray(R.array.times);
         FULLHOURS = getResources().getStringArray(R.array.full_hours);
 
+        Calendar cal = Calendar.getInstance();
+        int hour = cal.get(Calendar.HOUR_OF_DAY);
+        hour=hour-7;
+
+        Toast.makeText(this, "The current hour is "+hour, Toast.LENGTH_SHORT).show();
+
         listView = (ListView) findViewById(R.id.listView_future);
-        listView.setAdapter(new TimeAdapter(this, Arrays.copyOfRange(HOURS,HOURS.length/2, HOURS.length), Arrays.copyOfRange(FULLHOURS, FULLHOURS.length/2, FULLHOURS.length), false));
+        listView.setAdapter(new TimeAdapter(this, Arrays.copyOfRange(HOURS,hour*4, HOURS.length), Arrays.copyOfRange(FULLHOURS, hour, FULLHOURS.length), false));
 
         hiddenView = (ListView)findViewById(R.id.listView_previous);
-        hiddenView.setAdapter(new TimeAdapter(this, Arrays.copyOfRange(HOURS, 0, HOURS.length / 2), Arrays.copyOfRange(FULLHOURS, 0, FULLHOURS.length/2), true));
+        hiddenView.setAdapter(new TimeAdapter(this, Arrays.copyOfRange(HOURS, 0, hour*4), Arrays.copyOfRange(FULLHOURS, 0, hour), true));
 
         final Button showPast = (Button) findViewById(R.id.button_previous_times);
         showPast.setOnClickListener(new View.OnClickListener() {
@@ -107,6 +117,50 @@ public class TimeManagement extends ActionBarActivity {
         // and header view profile picture
 
         mRecyclerView.setAdapter(mAdapter);                              // Setting the adapter to RecyclerView
+
+        final GestureDetector mGestureDetector = new GestureDetector(TimeManagement.this, new GestureDetector.SimpleOnGestureListener() {
+
+            @Override public boolean onSingleTapUp(MotionEvent e) {
+                return true;
+            }
+
+        });
+
+        mRecyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+            @Override
+            public boolean onInterceptTouchEvent(RecyclerView recyclerView, MotionEvent motionEvent) {
+                View child = recyclerView.findChildViewUnder(motionEvent.getX(),motionEvent.getY());
+
+
+
+                if(child!=null && mGestureDetector.onTouchEvent(motionEvent)){
+                    Drawer.closeDrawers();
+                    Toast.makeText(TimeManagement.this,"The Item Clicked is: "+recyclerView.getChildPosition(child),Toast.LENGTH_SHORT).show();
+                    if(recyclerView.getChildPosition(child)==1){
+                        Intent intent = new Intent(TimeManagement.this, ProfileActivity.class);
+                        startActivity(intent);
+                    }else if(recyclerView.getChildPosition(child)==2){
+
+                    }else if(recyclerView.getChildPosition(child)==3){
+                        alarm.CancelAlarm(getApplicationContext());
+                        Intent intent = new Intent(TimeManagement.this, MainActivity.class);
+                        startActivity(intent);
+                        fabToolbar.hide();
+                        finish();
+                    }
+
+                    return true;
+
+                }
+
+                return false;
+            }
+
+            @Override
+            public void onTouchEvent(RecyclerView recyclerView, MotionEvent motionEvent) {
+
+            }
+        });
 
         mLayoutManager = new LinearLayoutManager(this);                 // Creating a layout Manager
 

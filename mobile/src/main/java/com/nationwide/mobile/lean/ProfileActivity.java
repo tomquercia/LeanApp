@@ -1,6 +1,8 @@
 package com.nationwide.mobile.lean;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.provider.ContactsContract;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -17,19 +19,37 @@ public class ProfileActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        final EditText firstName = (EditText) findViewById(R.id.first_name);
+        final EditText lastName = (EditText) findViewById(R.id.last_name);
+        final EditText role = (EditText) findViewById(R.id.role);
+        final EditText team = (EditText) findViewById(R.id.team);
+        final EditText managerFirstName = (EditText) findViewById(R.id.manager_first_name);
+        final EditText managerLastName = (EditText) findViewById(R.id.manager_last_name);
+        final EditText city = (EditText) findViewById(R.id.edittext_city);
+        final EditText building = (EditText) findViewById(R.id.edittext_building);
+        final EditText floorNumber = (EditText) findViewById(R.id.edittext_floor);
+
+        SharedPreferences prefs = getApplicationContext().getSharedPreferences("USER", Context.MODE_PRIVATE);
+
+        if(prefs.getBoolean("valid", false)) {
+
+            User user = UserCreator.getUser(getApplicationContext(), this);
+            firstName.setText(user.getFirstName());
+            lastName.setText(user.getLastName());
+            role.setText(user.getRole());
+            team.setText(user.getTeam());
+            managerFirstName.setText(user.getManagerFirstName());
+            managerLastName.setText(user.getManagerLastName());
+            city.setText(user.getCity());
+            building.setText(user.getBuilding());
+            floorNumber.setText(user.getFloorNumber());
+        }
+
+
         Button save = (Button) findViewById(R.id.button_save_profile);
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText firstName = (EditText) findViewById(R.id.first_name);
-                EditText lastName = (EditText) findViewById(R.id.last_name);
-                EditText role = (EditText) findViewById(R.id.role);
-                EditText team = (EditText) findViewById(R.id.team);
-                EditText managerFirstName = (EditText) findViewById(R.id.manager_first_name);
-                EditText managerLastName = (EditText) findViewById(R.id.manager_last_name);
-                EditText city = (EditText) findViewById(R.id.edittext_city);
-                EditText floorNumber = (EditText) findViewById(R.id.edittext_floor);
-                EditText building = (EditText) findViewById(R.id.edittext_building);
                 UserCreator.createUser(getApplicationContext(),
                         firstName.getText().toString(),
                         lastName.getText().toString(),
@@ -40,8 +60,16 @@ public class ProfileActivity extends ActionBarActivity {
                         city.getText().toString(),
                         building.getText().toString(),
                         floorNumber.getText().toString());
-                Intent intent = new Intent(ProfileActivity.this, MainActivity.class);
+                Intent intent = new Intent(ProfileActivity.this, LauncherActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        Button cancel = (Button)findViewById(R.id.button_cancel_profile);
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }

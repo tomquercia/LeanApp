@@ -19,6 +19,7 @@ import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -86,6 +87,17 @@ public class TasksActivity extends ActionBarActivity {
                 CheckedTextView checkbox = (CheckedTextView) v.findViewById(R.id.list_item_text_child);
                 checkbox.toggle();
 
+                Category category = categories.get(groupPosition);
+                if (checkbox.isChecked()) {
+                    // add child category to parent's selection list
+                    category.selection.add(checkbox.getText().toString());
+                    // sort list in alphabetical order
+                    Collections.sort(category.selection, new CustomComparator());
+                } else {
+                    // remove child category from parent's selection list
+                    category.selection.remove(checkbox.getText().toString());
+                }
+
 
                 // find parent view by tag
                 View parentView = categoriesList.findViewWithTag(categories.get(groupPosition).name);
@@ -94,17 +106,11 @@ public class TasksActivity extends ActionBarActivity {
                     TextView parentText = (TextView) parentView.findViewById(R.id.list_item_text_view);
 
                     if (sub != null) {
-                        Category category = categories.get(groupPosition);
+                        category = categories.get(groupPosition);
                         if (checkbox.isChecked()) {
-                            // add child category to parent's selection list
-                            category.selection.add(checkbox.getText().toString());
-
-                            // sort list in alphabetical order
                             parentText.setTextColor(getResources().getColor(R.color.nw_lightblue));
                             Collections.sort(category.selection, new CustomComparator());
                         } else {
-                            // remove child category from parent's selection list
-                            category.selection.remove(checkbox.getText().toString());
                             if(category.selection.isEmpty()){
                                 parentText.setTextColor(getResources().getColor(R.color.darkgrey));
                             }
