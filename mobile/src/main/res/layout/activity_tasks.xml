@@ -19,8 +19,32 @@
         android:paddingBottom="8dp"
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
-        android:background="@color/nw_yellow"
-        android:id="@+id/helpbox"></RelativeLayout>
+        android:background="@color/nw_green"
+        android:id="@+id/helpbox">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:text="Tap a category below and check off any tasks you worked on between 9:00 AM and 9:15 AM today"
+            android:id="@+id/text_view_help"
+            android:textColor="@color/white"
+            android:layout_centerHorizontal="true" />
+
+
+        <Button
+            android:id="@+id/button_ok_got_it"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_gravity="center"
+            android:text="@string/got_it"
+            android:textSize="18sp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/text_view_help"
+            android:textColor="@color/white" />
+    </RelativeLayout>
 
     <FrameLayout
         android:layout_width="match_parent"

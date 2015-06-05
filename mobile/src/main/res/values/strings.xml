@@ -23,5 +23,7 @@
     <string name="create_profile">Create Your Profile</string>
     <string name="title_activity_tasks">TasksActivity</string>
     <string name="action_save">Save</string>
+    <string name="got_it">OK, GOT IT</string>
+    <string name="help_text">Tap a category below and check off any tasks you worked on between </string>
 
 </resources>

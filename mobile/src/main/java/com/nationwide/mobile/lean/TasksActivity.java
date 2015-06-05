@@ -7,6 +7,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckedTextView;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
@@ -31,7 +32,6 @@ public class TasksActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tasks);
         mContext = this;
-
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
         //toolbar.setTitle(new SimpleDateFormat("EEEE, MMMM dd, yyyy").format(new Date()));
         setSupportActionBar(toolbar);
@@ -42,6 +42,14 @@ public class TasksActivity extends ActionBarActivity {
         adapter = new ListAdapter(this,
                 categories, categoriesList);
         categoriesList.setAdapter(adapter);
+        Button okButton = (Button) findViewById(R.id.button_ok_got_it);
+        okButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
 
         categoriesList.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
 
