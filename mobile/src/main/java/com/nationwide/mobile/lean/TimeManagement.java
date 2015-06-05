@@ -39,8 +39,6 @@ public class TimeManagement extends ActionBarActivity {
             R.drawable.ic_settings,
             R.drawable.ic_clock_dark};
 
-    String NAME = "Tom Quercia";
-    String EMAIL = "tomquercia@gmail.com";
     int PROFILE = R.mipmap.ic_launcher;
     private FabToolbar fabToolbar;
     private Toolbar toolbar;
@@ -52,6 +50,7 @@ public class TimeManagement extends ActionBarActivity {
     ListView listView;
     ListView hiddenView;
     int enabled = 0;
+    public User user;
     String[] HOURS = new String[]{
       "9:00", "9:15", "9:30", "9:45", "10:00", "10:15", "10:30", "10:45", "11:00", "11:15", "11:30", "11:45", "12:00"
     };
@@ -97,13 +96,13 @@ public class TimeManagement extends ActionBarActivity {
         });
         Log.d("Lean", "Adapter set");
 
-
+        user=UserCreator.getUser(getApplicationContext(), this);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.RecyclerView); // Assigning the RecyclerView Object to the xml View
 
         mRecyclerView.setHasFixedSize(true);                            // Letting the system know that the list objects are of fixed size
 
-        mAdapter = new MyAdapter(TITLES,ICONS,NAME,EMAIL,PROFILE);       // Creating the Adapter of MyAdapter class
+        mAdapter = new MyAdapter(TITLES,ICONS,user.getFirstName()+" "+user.getLastName(),user.getTeam(),PROFILE);       // Creating the Adapter of MyAdapter class
         // And passing the titles,icons,header view name, header view email,
         // and header view profile picture
 

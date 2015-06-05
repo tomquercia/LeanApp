@@ -20,6 +20,7 @@
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
         android:background="@color/nw_green"
+        android:visibility="gone"
         android:id="@+id/helpbox">
 
         <TextView

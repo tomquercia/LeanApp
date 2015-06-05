@@ -1,15 +1,23 @@
 package com.nationwide.mobile.lean;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 import android.widget.Button;
 import android.widget.CheckedTextView;
 import android.widget.ExpandableListView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
@@ -24,7 +32,7 @@ public class TasksActivity extends ActionBarActivity {
     private ExpandableListView categoriesList;
     private ArrayList<Category> categories;
     private Toolbar toolbar;
-
+    private SharedPreferences helpPref;
     protected Context mContext;
 
     @Override
@@ -33,7 +41,19 @@ public class TasksActivity extends ActionBarActivity {
         setContentView(R.layout.activity_tasks);
         mContext = this;
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        final RelativeLayout rel = (RelativeLayout)findViewById(R.id.helpbox);
         //toolbar.setTitle(new SimpleDateFormat("EEEE, MMMM dd, yyyy").format(new Date()));
+
+
+        helpPref = this.getSharedPreferences("HELP", Context.MODE_PRIVATE);
+
+        if(helpPref.getBoolean("valid", false)){
+            Log.d("Lean", "User has acknowledged help");
+            rel.setVisibility(View.GONE);
+        }else{
+            Log.d("Lean", "User has not acknowledged help");
+            rel.setVisibility(View.VISIBLE);
+        }
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         categoriesList = (ExpandableListView)findViewById(R.id.categories);
@@ -46,7 +66,12 @@ public class TasksActivity extends ActionBarActivity {
         okButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                //set up the animations here!
+                collapse(rel);
+                SharedPreferences prefs = TasksActivity.this.getSharedPreferences("HELP", Context.MODE_PRIVATE);
+                SharedPreferences.Editor prefsEditor = prefs.edit();
+                prefsEditor.putBoolean("valid", true);
+                prefsEditor.commit();
             }
         });
 
@@ -92,6 +117,59 @@ public class TasksActivity extends ActionBarActivity {
                 return true;
             }
         });
+    }
+
+    public static void expand(final View v) {
+        v.measure(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        final int targetHeight = v.getMeasuredHeight();
+
+        v.getLayoutParams().height = 0;
+        v.setVisibility(View.VISIBLE);
+        Animation a = new Animation()
+        {
+            @Override
+            protected void applyTransformation(float interpolatedTime, Transformation t) {
+                v.getLayoutParams().height = interpolatedTime == 1
+                        ? ViewGroup.LayoutParams.WRAP_CONTENT
+                        : (int)(targetHeight * interpolatedTime);
+                v.requestLayout();
+            }
+
+            @Override
+            public boolean willChangeBounds() {
+                return true;
+            }
+        };
+
+        // 1dp/ms
+        a.setDuration((int)(targetHeight / v.getContext().getResources().getDisplayMetrics().density));
+        v.startAnimation(a);
+    }
+
+    public static void collapse(final View v) {
+        final int initialHeight = v.getMeasuredHeight();
+
+        Animation a = new Animation()
+        {
+            @Override
+            protected void applyTransformation(float interpolatedTime, Transformation t) {
+                if(interpolatedTime == 1){
+                    v.setVisibility(View.GONE);
+                }else{
+                    v.getLayoutParams().height = initialHeight - (int)(initialHeight * interpolatedTime);
+                    v.requestLayout();
+                }
+            }
+
+            @Override
+            public boolean willChangeBounds() {
+                return true;
+            }
+        };
+
+        // 1dp/ms
+        a.setDuration((int) (initialHeight / v.getContext().getResources().getDisplayMetrics().density));
+        v.startAnimation(a);
     }
 
     public class CustomComparator implements Comparator<String> {

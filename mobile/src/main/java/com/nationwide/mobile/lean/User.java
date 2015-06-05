@@ -7,16 +7,18 @@ public class User {
     private String firstName;
     private String lastName;
     private String role;
+    private String team;
     private String managerFirstName;
     private String managerLastName;
     private String city;
     private String building;
     private String floorNumber;
 
-    public User(String firstName, String lastName, String role, String managerFirstName, String managerLastName, String city, String building, String floorNumber){
+    public User(String firstName, String lastName, String role, String team, String managerFirstName, String managerLastName, String city, String building, String floorNumber){
         this.firstName=firstName;
         this.lastName=lastName;
         this.role=role;
+        this.team=team;
         this.managerFirstName=managerFirstName;
         this.managerLastName=managerLastName;
         this.city=city;
@@ -46,6 +48,14 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public String getTeam(){
+        return team;
+    }
+
+    public void setTeam(String team){
+        this.team=team;
     }
 
     public String getManagerFirstName() {

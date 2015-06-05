@@ -17,6 +17,7 @@ public class UserCreator {
             String firstName = prefs.getString("firstName","");
             String lastName = prefs.getString("lastName","");
             String role = prefs.getString("role","");
+            String team = prefs.getString("team","");
             String managerFirstName = prefs.getString("managerFirstName","");
             String managerLastName = prefs.getString("managerLastName","");
             String city = prefs.getString("city","");
@@ -25,6 +26,7 @@ public class UserCreator {
             return new User (firstName,
                     lastName,
                     role,
+                    team,
                     managerFirstName,
                     managerLastName,
                     city,
@@ -42,6 +44,7 @@ public class UserCreator {
                                   String firstName,
                                   String lastName,
                                   String role,
+                                  String team,
                                   String managerFirstName,
                                   String managerLastName,
                                   String city,
@@ -54,6 +57,7 @@ public class UserCreator {
         prefsEditor.putString("firstName", firstName);
         prefsEditor.putString("lastName", lastName);
         prefsEditor.putString("role", role);
+        prefsEditor.putString("team", team);
         prefsEditor.putString("managerFirstName", managerFirstName);
         prefsEditor.putString("managerLastName", managerLastName);
         prefsEditor.putString("city", city);
@@ -61,6 +65,6 @@ public class UserCreator {
         prefsEditor.putString("floorNumber", floorNumber);
         prefsEditor.putBoolean("valid", true);
         prefsEditor.commit();
-        return new User(firstName,lastName,role,managerFirstName,managerLastName,city,building,floorNumber);
+        return new User(firstName,lastName,role,team,managerFirstName,managerLastName,city,building,floorNumber);
     }
 }

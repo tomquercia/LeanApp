@@ -24,6 +24,7 @@ public class ProfileActivity extends ActionBarActivity {
                 EditText firstName = (EditText) findViewById(R.id.first_name);
                 EditText lastName = (EditText) findViewById(R.id.last_name);
                 EditText role = (EditText) findViewById(R.id.role);
+                EditText team = (EditText) findViewById(R.id.team);
                 EditText managerFirstName = (EditText) findViewById(R.id.manager_first_name);
                 EditText managerLastName = (EditText) findViewById(R.id.manager_last_name);
                 EditText city = (EditText) findViewById(R.id.edittext_city);
@@ -33,6 +34,7 @@ public class ProfileActivity extends ActionBarActivity {
                         firstName.getText().toString(),
                         lastName.getText().toString(),
                         role.getText().toString(),
+                        team.getText().toString(),
                         managerFirstName.getText().toString(),
                         managerLastName.getText().toString(),
                         city.getText().toString(),

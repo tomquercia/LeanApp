@@ -40,8 +40,6 @@ public class MainActivity extends ActionBarActivity {
             R.drawable.ic_settings,
             R.drawable.ic_clock_dark};
 
-    String NAME = "Tom Quercia";
-    String EMAIL = "tomquercia@gmail.com";
     int PROFILE = R.mipmap.ic_launcher;
     private Alarm alarm;
     private FabToolbar fabToolbar;
@@ -53,6 +51,7 @@ public class MainActivity extends ActionBarActivity {
     ActionBarDrawerToggle mDrawerToggle;
     public static GoogleAnalytics analytics;
     public static Tracker tracker;
+    public User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,11 +74,13 @@ public class MainActivity extends ActionBarActivity {
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
 
+        user=UserCreator.getUser(getApplicationContext(), this);
+
         mRecyclerView = (RecyclerView) findViewById(R.id.RecyclerView); // Assigning the RecyclerView Object to the xml View
 
         mRecyclerView.setHasFixedSize(true);                            // Letting the system know that the list objects are of fixed size
 
-        mAdapter = new MyAdapter(TITLES,ICONS,NAME,EMAIL,PROFILE);       // Creating the Adapter of MyAdapter class
+        mAdapter = new MyAdapter(TITLES,ICONS,user.getFirstName()+" "+user.getLastName(),user.getTeam(),PROFILE);       // Creating the Adapter of MyAdapter class
         // And passing the titles,icons,header view name, header view email,
         // and header view profile picture
 
