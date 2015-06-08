@@ -26,6 +26,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.Iterator;
 
 
 public class TasksActivity extends ActionBarActivity {
@@ -43,7 +44,9 @@ public class TasksActivity extends ActionBarActivity {
         mContext = this;
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
         final RelativeLayout rel = (RelativeLayout)findViewById(R.id.helpbox);
-        //toolbar.setTitle(new SimpleDateFormat("EEEE, MMMM dd, yyyy").format(new Date()));
+        Intent intent = getIntent();
+        String time = intent.getStringExtra("TIME");
+        toolbar.setTitle(time);
 
 
         helpPref = this.getSharedPreferences("HELP", Context.MODE_PRIVATE);
@@ -191,6 +194,25 @@ public class TasksActivity extends ActionBarActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_tasks, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        if(item.getItemId() == R.id.action_settings){
+            for(int i=0; i<10; i++){
+                Category category = categories.get(i);
+                Log.d("Lean", "The children are " + category.selection.toString());
+/*
+                for(Iterator<Category> iterator = category.children.iterator(); iterator.hasNext();){
+                    Log.d("Lean", "The child is "+iterator.next().selection.get(0*/
+/*category.children.indexOf(iterator.next())*//*
+));
+                }
+*/
+            }
+        }
         return true;
     }
 

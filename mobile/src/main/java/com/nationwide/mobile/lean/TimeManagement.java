@@ -77,8 +77,7 @@ public class TimeManagement extends ActionBarActivity {
         Calendar cal = Calendar.getInstance();
         int hour = cal.get(Calendar.HOUR_OF_DAY);
         hour=hour-7;
-
-        Toast.makeText(this, "The current hour is "+hour, Toast.LENGTH_SHORT).show();
+        hour=hour%12;
 
         listView = (ListView) findViewById(R.id.listView_future);
         listView.setAdapter(new TimeAdapter(this, Arrays.copyOfRange(HOURS,hour*4, HOURS.length), Arrays.copyOfRange(FULLHOURS, hour, FULLHOURS.length), false));
