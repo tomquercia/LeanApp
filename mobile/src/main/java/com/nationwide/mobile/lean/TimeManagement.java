@@ -56,10 +56,10 @@ public class TimeManagement extends ActionBarActivity {
     int enabled = 0;
     public User user;
     String[] HOURS = new String[]{
-      "9:00", "9:15", "9:30", "9:45", "10:00", "10:15", "10:30", "10:45", "11:00", "11:15", "11:30", "11:45", "12:00"
+            "9:00", "9:15", "9:30", "9:45", "10:00", "10:15", "10:30", "10:45", "11:00", "11:15", "11:30", "11:45", "12:00"
     };
     String[] FULLHOURS = new String[]{
-      "9:00", "10:00", "11:00", "12:00"
+            "9:00", "10:00", "11:00", "12:00"
     };
 
     @Override
@@ -273,6 +273,36 @@ public class TimeManagement extends ActionBarActivity {
         // 1dp/ms
         a.setDuration((int)(initialHeight / v.getContext().getResources().getDisplayMetrics().density));
         v.startAnimation(a);
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        Log.d("Lean", "in the on resume");
+        DrawerLayout drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout1);
+        drawerLayout.invalidate();
+    }
+
+    @Override
+    public void onStart(){
+        super.onStart();
+        Log.d("Lean", "in the on start");
+        DrawerLayout drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout1);
+        drawerLayout.invalidate();
+
+        HOURS = getResources().getStringArray(R.array.times);
+        FULLHOURS = getResources().getStringArray(R.array.full_hours);
+
+        Calendar cal = Calendar.getInstance();
+        int hour = cal.get(Calendar.HOUR_OF_DAY);
+        hour=hour-7;
+        hour=hour%12;
+
+        listView = (ListView) findViewById(R.id.listView_future);
+        listView.setAdapter(new TimeAdapter(this, Arrays.copyOfRange(HOURS, hour * 4, HOURS.length), Arrays.copyOfRange(FULLHOURS, hour, FULLHOURS.length), false));
+
+        hiddenView = (ListView)findViewById(R.id.listView_previous);
+        hiddenView.setAdapter(new TimeAdapter(this, Arrays.copyOfRange(HOURS, 0, hour * 4), Arrays.copyOfRange(FULLHOURS, 0, hour), true));
     }
 
     @Override

@@ -3,6 +3,7 @@ package com.nationwide.mobile.lean;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -36,6 +37,7 @@ public class TasksActivity extends ActionBarActivity {
     private Toolbar toolbar;
     private SharedPreferences helpPref;
     protected Context mContext;
+    private String timeAccessed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,7 @@ public class TasksActivity extends ActionBarActivity {
         final RelativeLayout rel = (RelativeLayout)findViewById(R.id.helpbox);
         Intent intent = getIntent();
         String time = intent.getStringExtra("TIME");
+        timeAccessed=time;
         toolbar.setTitle(time);
 
 
@@ -201,6 +204,13 @@ public class TasksActivity extends ActionBarActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         if(item.getItemId() == R.id.action_settings){
+
+            QuarterHourCreator.createQuarterHour(this, categories, timeAccessed);
+
+            //TODO: we can add some error handling in here, like if the user hasn't selected any options or if the user only selects one item total
+
+            finish();
+
             for(int i=0; i<10; i++){
                 Category category = categories.get(i);
                 Log.d("Lean", "The children are " + category.selection.toString());
@@ -212,8 +222,13 @@ public class TasksActivity extends ActionBarActivity {
                 }
 */
             }
+        }else if (item.getItemId() == R.id.home) {
+            //this gets executed when the user clicks the back arrow at the top of the page!
+            NavUtils.navigateUpFromSameTask(this);
+            return true;
+
         }
-        return true;
+        return super.onOptionsItemSelected(item);
     }
 
 }
