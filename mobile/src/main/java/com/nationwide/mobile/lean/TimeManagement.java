@@ -75,9 +75,9 @@ public class TimeManagement extends ActionBarActivity {
         FULLHOURS = getResources().getStringArray(R.array.full_hours);
 
         Calendar cal = Calendar.getInstance();
-        int hour = cal.get(Calendar.HOUR_OF_DAY);
-        hour=hour-7;
-        hour=hour%12;
+        final int hour = cal.get(Calendar.HOUR_OF_DAY)-7;
+        /*hour=hour-7;
+        hour=hour%12;*/
 
         listView = (ListView) findViewById(R.id.listView_future);
         listView.setAdapter(new TimeAdapter(this, Arrays.copyOfRange(HOURS,hour*4, HOURS.length), Arrays.copyOfRange(FULLHOURS, hour, FULLHOURS.length), false));
@@ -91,8 +91,9 @@ public class TimeManagement extends ActionBarActivity {
             public void onClick(View v) {
                 if(enabled == 0) {
                     hiddenView.setVisibility(View.VISIBLE);
-                    expand((LinearLayout)findViewById(R.id.times_drawer));
+                    expand((LinearLayout) findViewById(R.id.times_drawer));
                     showPast.setText(getResources().getString(R.string.hide_previous));
+                    hiddenView.setSelection(listView.getCount() - 1);
                     enabled = 1;
                 }
                 else{
@@ -187,23 +188,6 @@ public class TimeManagement extends ActionBarActivity {
         Drawer.setDrawerListener(mDrawerToggle); // Drawer Listener set to the Drawer toggle
         mDrawerToggle.syncState();
 
-
-/*
-        alarm = new Alarm();
-        Button clockOut = (Button) findViewById(R.id.button_check_out);
-        clockOut.setOnClickListener(new Button.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(alarm != null) {
-                    alarm.CancelAlarm(getApplicationContext());
-                    Toast.makeText(getApplicationContext(), "You won't receive any more notifications until you check in tomorrow.", Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(getApplicationContext(), "Alarm is null", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-*/
-
         fabToolbar = ((FabToolbar) findViewById(R.id.fab_toolbar));
         fabToolbar.setColor(getResources().getColor(R.color.nw_red));
         TextView title = (TextView) findViewById(R.id.go);
@@ -271,16 +255,8 @@ public class TimeManagement extends ActionBarActivity {
         };
 
         // 1dp/ms
-        a.setDuration((int)(initialHeight / v.getContext().getResources().getDisplayMetrics().density));
+        a.setDuration((int) (initialHeight / v.getContext().getResources().getDisplayMetrics().density));
         v.startAnimation(a);
-    }
-
-    @Override
-    public void onResume(){
-        super.onResume();
-        Log.d("Lean", "in the on resume");
-        DrawerLayout drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout1);
-        drawerLayout.invalidate();
     }
 
     @Override

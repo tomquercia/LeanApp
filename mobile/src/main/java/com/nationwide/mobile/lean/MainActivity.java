@@ -159,29 +159,6 @@ public class MainActivity extends ActionBarActivity {
         Drawer.setDrawerListener(mDrawerToggle); // Drawer Listener set to the Drawer toggle
         mDrawerToggle.syncState();
 
-/*
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.nw_blue)));
-*/
-/*        Button clockIn = (Button) findViewById(R.id.button_check_in);
-        clockIn.setOnClickListener(new Button.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "State is "+fabToolbar.getState(), Toast.LENGTH_SHORT).show();
-/*
-                if(alarm != null) {
-                    alarm.SetAlarm(getApplicationContext());
-                }else{
-                    Toast.makeText(getApplicationContext(), "Alarm is null", Toast.LENGTH_SHORT).show();
-                }
-
-                Intent intent = new Intent(getApplicationContext(), TimeManagement.class);
-                startActivity(intent);
-
-/*
-            }
-        });*/
-
         fabToolbar = ((FabToolbar) findViewById(R.id.fab_toolbar));
         fabToolbar.setColor(getResources().getColor(R.color.nw_green));
         TextView title = (TextView) findViewById(R.id.go);
