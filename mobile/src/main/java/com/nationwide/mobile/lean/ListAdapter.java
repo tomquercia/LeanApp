@@ -89,7 +89,7 @@ public class ListAdapter extends BaseExpandableListAdapter {
 
         if(mParent.get(i).selection.size()>0) {
             textView.setTextColor(view.getResources().getColor(R.color.nw_lightblue));
-            sub.setText(mParent.get(i).selection.toString());
+            sub.setText(mParent.get(i).selection.toString().replace("[","").replace("]",""));
         }
         else {
             textView.setTextColor(view.getResources().getColor(R.color.darkgrey));

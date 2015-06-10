@@ -126,14 +126,14 @@ public class TimeAdapter extends BaseAdapter {
                 textView1.setTextColor(context.getResources().getColor(R.color.white));
                 bottomTextView1.setTextColor(context.getResources().getColor(R.color.white));
                 imageView1.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_check));
-                imageView1.setPadding(0, 0, 0, 0);
+                //imageView1.setPadding(0, 0, 0, 0);
                 bottomTextView1.setText("Completed");
             }else {
                 boxView1.setBackgroundColor(context.getResources().getColor(R.color.nw_green_card));
                 textView1.setTextColor(context.getResources().getColor(R.color.white_87));
                 bottomTextView1.setTextColor(context.getResources().getColor(R.color.white_54));
                 imageView1.setImageDrawable(context.getResources().getDrawable(R.drawable.chevron));
-                imageView1.setPadding(0, 3, 0, 3);
+                //imageView1.setPadding(0, 3, 0, 3);
                 bottomTextView1.setText("Not Entered");
             }
 
@@ -143,14 +143,14 @@ public class TimeAdapter extends BaseAdapter {
                 textView2.setTextColor(context.getResources().getColor(R.color.white));
                 bottomTextView2.setTextColor(context.getResources().getColor(R.color.white));
                 imageView2.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_check));
-                imageView2.setPadding(0, 0, 0, 0);
+                //imageView2.setPadding(0, 0, 0, 0);
                 bottomTextView2.setText("Completed");
             }else {
                 boxView2.setBackgroundColor(context.getResources().getColor(R.color.nw_green_card));
                 textView2.setTextColor(context.getResources().getColor(R.color.white_87));
                 bottomTextView2.setTextColor(context.getResources().getColor(R.color.white_54));
                 imageView2.setImageDrawable(context.getResources().getDrawable(R.drawable.chevron));
-                imageView2.setPadding(0, 3, 0, 3);
+                //imageView2.setPadding(0, 3, 0, 3);
                 bottomTextView2.setText("Not Entered");
             }
 
@@ -160,14 +160,14 @@ public class TimeAdapter extends BaseAdapter {
                 textView3.setTextColor(context.getResources().getColor(R.color.white));
                 bottomTextView3.setTextColor(context.getResources().getColor(R.color.white));
                 imageView3.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_check));
-                imageView3.setPadding(0, 0, 0, 0);
+                //imageView3.setPadding(0, 0, 0, 0);
                 bottomTextView3.setText("Completed");
             }else {
                 boxView3.setBackgroundColor(context.getResources().getColor(R.color.nw_green_card));
                 textView3.setTextColor(context.getResources().getColor(R.color.white_87));
                 bottomTextView3.setTextColor(context.getResources().getColor(R.color.white_54));
                 imageView3.setImageDrawable(context.getResources().getDrawable(R.drawable.chevron));
-                imageView3.setPadding(0, 3, 0, 3);
+                //imageView3.setPadding(0, 3, 0, 3);
                 bottomTextView3.setText("Not Entered");
             }
 
@@ -177,14 +177,14 @@ public class TimeAdapter extends BaseAdapter {
                 textView4.setTextColor(context.getResources().getColor(R.color.white));
                 bottomTextView4.setTextColor(context.getResources().getColor(R.color.white));
                 imageView4.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_check));
-                imageView4.setPadding(0, 0, 0, 0);
+                //imageView4.setPadding(0, 0, 0, 0);
                 bottomTextView4.setText("Completed");
             }else {
                 boxView4.setBackgroundColor(context.getResources().getColor(R.color.nw_green_card));
                 textView4.setTextColor(context.getResources().getColor(R.color.white_87));
                 bottomTextView4.setTextColor(context.getResources().getColor(R.color.white_54));
                 imageView4.setImageDrawable(context.getResources().getDrawable(R.drawable.chevron));
-                imageView4.setPadding(0, 3, 0, 3);
+                //imageView4.setPadding(0, 3, 0, 3);
                 bottomTextView4.setText("Not Entered");
             }
 
@@ -197,14 +197,14 @@ public class TimeAdapter extends BaseAdapter {
                 textView1.setTextColor(context.getResources().getColor(R.color.white));
                 bottomTextView1.setTextColor(context.getResources().getColor(R.color.white));
                 imageView1.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_check));
-                imageView1.setPadding(0, 0, 0, 0);
+                //imageView1.setPadding(0, 0, 0, 0);
                 bottomTextView1.setText("Completed");
             }else {
                 boxView1.setBackgroundColor(context.getResources().getColor(R.color.grey));
                 textView1.setTextColor(context.getResources().getColor(R.color.black_87));
                 bottomTextView1.setTextColor(context.getResources().getColor(R.color.black_54));
                 imageView1.setImageDrawable(context.getResources().getDrawable(R.drawable.chevron));
-                imageView1.setPadding(0, 3, 0, 3);
+                //imageView1.setPadding(0, 3, 0, 3);
                 bottomTextView1.setText("7 hr 55 min from now ");
             }
 
@@ -214,14 +214,14 @@ public class TimeAdapter extends BaseAdapter {
                 textView2.setTextColor(context.getResources().getColor(R.color.white));
                 bottomTextView2.setTextColor(context.getResources().getColor(R.color.white));
                 imageView2.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_check));
-                imageView2.setPadding(0, 0, 0, 0);
+                //imageView2.setPadding(0, 0, 0, 0);
                 bottomTextView2.setText("Completed");
             }else {
                 boxView2.setBackgroundColor(context.getResources().getColor(R.color.grey));
                 textView2.setTextColor(context.getResources().getColor(R.color.black_87));
                 bottomTextView2.setTextColor(context.getResources().getColor(R.color.black_54));
                 imageView2.setImageDrawable(context.getResources().getDrawable(R.drawable.chevron));
-                imageView2.setPadding(0, 3, 0, 3);
+                //imageView2.setPadding(0, 3, 0, 3);
                 bottomTextView2.setText("7 hr 55 min from now ");
             }
 
@@ -232,14 +232,14 @@ public class TimeAdapter extends BaseAdapter {
                 textView3.setTextColor(context.getResources().getColor(R.color.white));
                 bottomTextView3.setTextColor(context.getResources().getColor(R.color.white));
                 imageView3.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_check));
-                imageView3.setPadding(0, 0, 0, 0);
+                //imageView3.setPadding(0, 0, 0, 0);
                 bottomTextView3.setText("Completed");
             }else {
                 boxView3.setBackgroundColor(context.getResources().getColor(R.color.grey));
                 textView3.setTextColor(context.getResources().getColor(R.color.black_87));
                 bottomTextView3.setTextColor(context.getResources().getColor(R.color.black_54));
                 imageView3.setImageDrawable(context.getResources().getDrawable(R.drawable.chevron));
-                imageView3.setPadding(0, 3, 0, 3);
+                //imageView3.setPadding(0, 3, 0, 3);
                 bottomTextView3.setText("7 hr 55 min from now ");
             }
 
@@ -249,14 +249,14 @@ public class TimeAdapter extends BaseAdapter {
                 textView4.setTextColor(context.getResources().getColor(R.color.white));
                 bottomTextView4.setTextColor(context.getResources().getColor(R.color.white));
                 imageView4.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_check));
-                imageView4.setPadding(0, 0, 0, 0);
+                //imageView4.setPadding(0, 0, 0, 0);
                 bottomTextView4.setText("Completed");
             }else {
                 boxView4.setBackgroundColor(context.getResources().getColor(R.color.grey));
                 textView4.setTextColor(context.getResources().getColor(R.color.black_87));
                 bottomTextView4.setTextColor(context.getResources().getColor(R.color.black_54));
                 imageView4.setImageDrawable(context.getResources().getDrawable(R.drawable.chevron));
-                imageView4.setPadding(0, 3, 0, 3);
+                //imageView4.setPadding(0, 3, 0, 3);
                 bottomTextView4.setText("7 hr 55 min from now ");
             }
         }

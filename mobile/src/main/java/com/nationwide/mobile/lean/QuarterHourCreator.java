@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.util.Log;
 
+import com.google.gson.Gson;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -17,14 +19,21 @@ public class QuarterHourCreator {
 
         if(prefs.getBoolean("valid", false)){
             Log.d("Lean", "User Profile Already Exists");
+            Gson gson = new Gson();
+            String json = prefs.getString("quarterHour", "");
+            Log.d("Lean", "Reading the json!!! " + json);
+            QuarterHour ret = gson.fromJson(json, QuarterHour.class);
+/*
+
             ArrayList<Category> categories = new ArrayList<>();
+            QuarterHour ret = new QuarterHour(quarterHour, categories);
             try {
-                categories = (ArrayList<Category>)ObjectSerializer.deserialize(prefs.getString("categories", ObjectSerializer.serialize(new ArrayList<Category>())));
+                ret = (QuarterHour)ObjectSerializer.deserialize(prefs.getString("quarterHour", ObjectSerializer.serialize(new QuarterHour(quarterHour,categories))));
             } catch (IOException e){
                 e.printStackTrace();
-            }
+            }*/
 
-            return new QuarterHour (quarterHour, categories);
+            return ret;
         }else{
             Log.d("Lean", "Saved time does not exist");
             return null;
@@ -39,14 +48,26 @@ public class QuarterHourCreator {
         Log.d("Lean", "saving quarter hour");
         SharedPreferences prefs = context.getSharedPreferences(quarterHour, Context.MODE_PRIVATE);
         SharedPreferences.Editor prefsEditor = prefs.edit();
-        try {
+        QuarterHour ret = new QuarterHour(quarterHour,categories);
+        Gson gson = new Gson();
+        String json = gson.toJson(ret);
+        prefsEditor.putString("quarterHour", json);
+        Log.d("Lean", "Saving the json "+json);
+/*        try {
             prefsEditor.putString("categories", ObjectSerializer.serialize(categories));
         } catch (IOException e){
             e.printStackTrace();
         }
-        prefsEditor.putString("quarterHour", quarterHour);
+        prefsEditor.putString("quarterHour", quarterHour);*/
+/*
+        try {
+            prefsEditor.putString("quarterHour", ObjectSerializer.serialize(ret));
+            Log.d("Lean", "Serialization complete "+ObjectSerializer.serialize(ret));
+        } catch (IOException e){
+            e.printStackTrace();
+        }*/
         prefsEditor.putBoolean("valid", true);
         prefsEditor.commit();
-        return new QuarterHour(quarterHour,categories);
+        return ret;
     }
 }

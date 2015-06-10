@@ -65,7 +65,20 @@ public class TasksActivity extends ActionBarActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         categoriesList = (ExpandableListView)findViewById(R.id.categories);
         Category.context = this;
-        categories = Category.getCategories();
+
+
+        QuarterHour qh = QuarterHourCreator.getQuarterHour(getApplicationContext(), this, time);
+
+
+        if(qh != null){
+            Log.d("Lean", "The saved preference is "+ qh.getChoices().get(1).selection.toString());
+            categories = Category.getPopulatedCategories(qh);
+        }
+        else {
+            categories = Category.getCategories();
+        }
+
+
         adapter = new ListAdapter(this,
                 categories, categoriesList);
         categoriesList.setAdapter(adapter);
@@ -123,7 +136,7 @@ public class TasksActivity extends ActionBarActivity {
                         }
 
                         // display selection list
-                        sub.setText(category.selection.toString());
+                        sub.setText(category.selection.toString().replace("[","").replace("]",""));
                     }
                 }
                 return true;
@@ -205,7 +218,8 @@ public class TasksActivity extends ActionBarActivity {
         // Handle item selection
         if(item.getItemId() == R.id.action_settings){
 
-            QuarterHourCreator.createQuarterHour(this, categories, timeAccessed);
+            QuarterHour qh = QuarterHourCreator.createQuarterHour(this, categories, timeAccessed);
+            Log.d("Lean", "The children are " + qh.getChoices().get(1).selection.toString());
 
             //TODO: we can add some error handling in here, like if the user hasn't selected any options or if the user only selects one item total
 
