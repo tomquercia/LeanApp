@@ -205,7 +205,7 @@ public class TimeAdapter extends BaseAdapter {
                 bottomTextView1.setTextColor(context.getResources().getColor(R.color.black_54));
                 imageView1.setImageDrawable(context.getResources().getDrawable(R.drawable.chevron));
                 //imageView1.setPadding(0, 3, 0, 3);
-                bottomTextView1.setText("7 hr 55 min from now ");
+                bottomTextView1.setText("Not Entered ");
             }
 
             String time2 = textView2.getText().toString();
@@ -222,7 +222,7 @@ public class TimeAdapter extends BaseAdapter {
                 bottomTextView2.setTextColor(context.getResources().getColor(R.color.black_54));
                 imageView2.setImageDrawable(context.getResources().getDrawable(R.drawable.chevron));
                 //imageView2.setPadding(0, 3, 0, 3);
-                bottomTextView2.setText("7 hr 55 min from now ");
+                bottomTextView2.setText("Not Entered ");
             }
 
 
@@ -240,7 +240,7 @@ public class TimeAdapter extends BaseAdapter {
                 bottomTextView3.setTextColor(context.getResources().getColor(R.color.black_54));
                 imageView3.setImageDrawable(context.getResources().getDrawable(R.drawable.chevron));
                 //imageView3.setPadding(0, 3, 0, 3);
-                bottomTextView3.setText("7 hr 55 min from now ");
+                bottomTextView3.setText("Not Entered ");
             }
 
             String time4 = textView4.getText().toString();
@@ -257,7 +257,7 @@ public class TimeAdapter extends BaseAdapter {
                 bottomTextView4.setTextColor(context.getResources().getColor(R.color.black_54));
                 imageView4.setImageDrawable(context.getResources().getDrawable(R.drawable.chevron));
                 //imageView4.setPadding(0, 3, 0, 3);
-                bottomTextView4.setText("7 hr 55 min from now ");
+                bottomTextView4.setText("Not Entered ");
             }
         }
 

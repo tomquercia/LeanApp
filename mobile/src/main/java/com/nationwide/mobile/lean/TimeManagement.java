@@ -1,6 +1,8 @@
 package com.nationwide.mobile.lean;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
@@ -25,7 +27,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.alexkolpa.fabtoolbar.FabToolbar;
+import com.google.gson.Gson;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -197,9 +205,77 @@ public class TimeManagement extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 alarm.CancelAlarm(getApplicationContext());
+                fabToolbar.hide();
+                User user = UserCreator.getUser(getApplicationContext(), TimeManagement.this);
+                Gson gson = new Gson();
+                String jsonUser = gson.toJson(user);
+                String output = jsonUser;
+                for(int i=0; i<HOURS.length; i++){
+                    SharedPreferences prefs = getApplicationContext().getSharedPreferences(HOURS[i], Context.MODE_PRIVATE);;
+/*
+                    QuarterHour qh = QuarterHourCreator.getQuarterHour(getApplicationContext(), TimeManagement.this, HOURS[i]);
+*/
+                    if(prefs.getBoolean("valid", false)){
+                        Log.d("Lean", "User Profile Already Exists");
+                        String json = prefs.getString("quarterHour", "");
+                        Log.d("Lean", "Reading the json!!! " + json);
+                        output += json;
+                    }else{
+                        Log.d("Lean", "Saved time does not exist");
+                    }
+                }
+
+                try {
+                    // catches IOException below
+       /* We have to use the openFileOutput()-method
+       * the ActivityContext provides, to
+       * protect your file from others and
+       * This is done for security-reasons.
+       * We chose MODE_WORLD_READABLE, because
+       *  we have nothing to hide in our file */
+                    FileOutputStream fOut = openFileOutput(user.getFirstName()+user.getLastName(),
+                            MODE_WORLD_READABLE);
+                    OutputStreamWriter osw = new OutputStreamWriter(fOut);
+
+                    // Write the string to the file
+                    osw.write(output);
+
+       /* ensure that everything is
+        * really written out and close */
+                    osw.flush();
+                    osw.close();
+
+//Reading the file back...
+
+       /* We have to use the openFileInput()-method
+        * the ActivityContext provides.
+        * Again for security reasons with
+        * openFileInput(...) */
+
+                    FileInputStream fIn = openFileInput(user.getFirstName()+user.getLastName());
+                    InputStreamReader isr = new InputStreamReader(fIn);
+
+        /* Prepare a char-Array that will
+         * hold the chars we read back in. */
+                    char[] inputBuffer = new char[output.length()];
+
+                    // Fill the Buffer with data from the file
+                    isr.read(inputBuffer);
+
+                    // Transform the chars to a String
+                    String readString = new String(inputBuffer);
+
+                    // Check if we read back the same chars that we had written out
+                    boolean isTheSame = output.equals(readString);
+
+                    Log.i("File Reading stuff", "success = " + isTheSame);
+
+                } catch (IOException ioe)
+                {ioe.printStackTrace();}
+
                 Intent intent = new Intent(TimeManagement.this, MainActivity.class);
                 startActivity(intent);
-                fabToolbar.hide();
+
                 finish();
             }
         });

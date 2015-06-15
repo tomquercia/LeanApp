@@ -218,16 +218,15 @@ public class TasksActivity extends ActionBarActivity {
         // Handle item selection
         if(item.getItemId() == R.id.action_settings){
 
-            QuarterHour qh = QuarterHourCreator.createQuarterHour(this, categories, timeAccessed);
-            Log.d("Lean", "The children are " + qh.getChoices().get(1).selection.toString());
-
             //TODO: we can add some error handling in here, like if the user hasn't selected any options or if the user only selects one item total
 
-            finish();
-
+            boolean selected = false;
             for(int i=0; i<10; i++){
                 Category category = categories.get(i);
                 Log.d("Lean", "The children are " + category.selection.toString());
+                if(category.selection.size() != 0){
+                    selected=true;
+                }
 /*
                 for(Iterator<Category> iterator = category.children.iterator(); iterator.hasNext();){
                     Log.d("Lean", "The child is "+iterator.next().selection.get(0*/
@@ -235,6 +234,15 @@ public class TasksActivity extends ActionBarActivity {
 ));
                 }
 */
+            }
+
+            if(selected){
+                QuarterHour qh = QuarterHourCreator.createQuarterHour(this, categories, timeAccessed);
+                finish();
+                Log.d("Lean", "The children are " + qh.getChoices().get(1).selection.toString());
+            } else{
+                //TODO: IF USER DOESN'T MAKE ANY SELECTION, MAKE A DIALOGUE TELLING HIM HE HASN'T
+                Log.d("Lean","User hasn't made any selections!");
             }
         }else if (item.getItemId() == R.id.home) {
             //this gets executed when the user clicks the back arrow at the top of the page!

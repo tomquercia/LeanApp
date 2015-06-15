@@ -1,9 +1,11 @@
 package com.nationwide.mobile.lean;
 
+import java.io.Serializable;
+
 /**
  * Created by querct1 on 6/2/2015.
  */
-public class User {
+public class User implements Serializable {
     private String firstName;
     private String lastName;
     private String role;

@@ -32,6 +32,8 @@ import com.google.android.gms.analytics.Tracker;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 
+import java.util.Calendar;
+
 
 public class MainActivity extends ActionBarActivity {
 
@@ -178,12 +180,20 @@ public class MainActivity extends ActionBarActivity {
                         .setLabel("Check in")
                         .build());
 */
-                alarm.SetAlarm(getApplicationContext());
-                Intent intent = new Intent(MainActivity.this, TimeManagement.class);
-                startActivity(intent);
 
-                //Toast.makeText(getApplicationContext(), "You clicked the button", Toast.LENGTH_SHORT).show();
-                fabToolbar.hide();
+                Calendar cal = Calendar.getInstance();
+                final int hour = cal.get(Calendar.HOUR_OF_DAY);
+                if(hour>7 && hour<20){
+                    alarm.SetAlarm(getApplicationContext());
+                    Intent intent = new Intent(MainActivity.this, TimeManagement.class);
+                    startActivity(intent);
+
+                    //Toast.makeText(getApplicationContext(), "You clicked the button", Toast.LENGTH_SHORT).show();
+                    fabToolbar.hide();
+                }
+                else{
+                    Toast.makeText(MainActivity.this, "Standard work hours for the purpose of data collection are 7 AM - 7 PM", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

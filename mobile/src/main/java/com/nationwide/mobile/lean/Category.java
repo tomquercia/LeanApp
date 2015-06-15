@@ -30,7 +30,7 @@ public class Category {
     }
 
     public Category (String name, ArrayList<String> selection){
-        children = new ArrayList<Category>();
+        //children = new ArrayList<Category>();
         this.selection = selection;
         this.name=name;
     }
@@ -162,9 +162,6 @@ public class Category {
         for(int i=0; i < children.length; i++) {
             String choice = children[i];
             ArrayList<String> selections= quarterHour.getChoices().get(parent).selection;
-            for (int j=0; j<0; j++){
-
-            }
             Category cat = new Category(choice, selections);
             this.children.add(cat);
             //this.selection.add(selections.get(i));

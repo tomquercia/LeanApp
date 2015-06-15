@@ -50,18 +50,47 @@ public class ProfileActivity extends ActionBarActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UserCreator.createUser(getApplicationContext(),
-                        firstName.getText().toString(),
-                        lastName.getText().toString(),
-                        role.getText().toString(),
-                        team.getText().toString(),
-                        managerFirstName.getText().toString(),
-                        managerLastName.getText().toString(),
-                        city.getText().toString(),
-                        building.getText().toString(),
-                        floorNumber.getText().toString());
-                Intent intent = new Intent(ProfileActivity.this, LauncherActivity.class);
-                startActivity(intent);
+                if(firstName.getText().toString().equalsIgnoreCase("") ){
+                    firstName.setError("You need to put yo first name in, fool!");
+                }
+                else if(lastName.getText().toString().equalsIgnoreCase("")){
+                    lastName.setError("You need to put yo last name in, fool!");
+                }
+                else if(role.getText().toString().equalsIgnoreCase("")){
+                    role.setError("You need to put yo role in, fool!");
+                }
+                else if(team.getText().toString().equalsIgnoreCase("")){
+                    team.setError("You need to put yo team in, fool!");
+                }
+                else if(managerFirstName.getText().toString().equalsIgnoreCase("")){
+                    managerFirstName.setError("You need to put yo manager's first name in, fool!");
+                }
+                else if(managerLastName.getText().toString().equalsIgnoreCase("")){
+                    managerLastName.setError("You need to put yo manager's last name in, fool!");
+                }
+                else if(city.getText().toString().equalsIgnoreCase("")){
+                    city.setError("You need to put yo city in, fool!");
+                }
+                else if(building.getText().toString().equalsIgnoreCase("")){
+                    building.setError("You need to put yo building in, fool!");
+                }
+                else if(floorNumber.getText().toString().equalsIgnoreCase("")){
+                    floorNumber.setError("You need to put yo floor number in, fool!");
+                }
+                else {
+                    UserCreator.createUser(getApplicationContext(),
+                            firstName.getText().toString(),
+                            lastName.getText().toString(),
+                            role.getText().toString(),
+                            team.getText().toString(),
+                            managerFirstName.getText().toString(),
+                            managerLastName.getText().toString(),
+                            city.getText().toString(),
+                            building.getText().toString(),
+                            floorNumber.getText().toString());
+                    Intent intent = new Intent(ProfileActivity.this, LauncherActivity.class);
+                    startActivity(intent);
+                }
             }
         });
 
