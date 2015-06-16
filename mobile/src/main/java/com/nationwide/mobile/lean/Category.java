@@ -30,7 +30,7 @@ public class Category {
     }
 
     public Category (String name, ArrayList<String> selection){
-        //children = new ArrayList<Category>();
+        children = new ArrayList<Category>();
         this.selection = selection;
         this.name=name;
     }

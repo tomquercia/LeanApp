@@ -226,7 +226,7 @@ public class TimeAdapter extends BaseAdapter {
                 //imageView2.setPadding(0, 0, 0, 0);
                 bottomTextView2.setText("Completed");
             }else {
-                if(TimeManagement.getUnfilledHours()!= null && TimeManagement.getUnfilledHours().contains(time)){
+                if(TimeManagement.getUnfilledHours()!= null && TimeManagement.getUnfilledHours().contains(time2)){
                         boxView2.setBackgroundColor(context.getResources().getColor(R.color.red));
                         textView2.setTextColor(context.getResources().getColor(R.color.white));
                         bottomTextView2.setTextColor(context.getResources().getColor(R.color.white));
@@ -253,7 +253,7 @@ public class TimeAdapter extends BaseAdapter {
                 //imageView3.setPadding(0, 0, 0, 0);
                 bottomTextView3.setText("Completed");
             }else {
-                if(TimeManagement.getUnfilledHours()!=null && TimeManagement.getUnfilledHours().contains(time)){
+                if(TimeManagement.getUnfilledHours()!=null && TimeManagement.getUnfilledHours().contains(time3)){
                     boxView3.setBackgroundColor(context.getResources().getColor(R.color.red));
                     textView3.setTextColor(context.getResources().getColor(R.color.white));
                     bottomTextView3.setTextColor(context.getResources().getColor(R.color.white));
@@ -279,7 +279,7 @@ public class TimeAdapter extends BaseAdapter {
                 //imageView4.setPadding(0, 0, 0, 0);
                 bottomTextView4.setText("Completed");
             }else {
-                if(TimeManagement.getUnfilledHours()!=null && TimeManagement.getUnfilledHours().contains(time)){
+                if(TimeManagement.getUnfilledHours()!=null && TimeManagement.getUnfilledHours().contains(time4)){
                     boxView4.setBackgroundColor(context.getResources().getColor(R.color.red));
                     textView4.setTextColor(context.getResources().getColor(R.color.white));
                     bottomTextView4.setTextColor(context.getResources().getColor(R.color.white));

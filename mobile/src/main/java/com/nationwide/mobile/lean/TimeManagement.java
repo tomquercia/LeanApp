@@ -71,7 +71,7 @@ public class TimeManagement extends ActionBarActivity {
     String[] FULLHOURS = new String[]{
             "9:00", "10:00", "11:00", "12:00"
     };
-    public static ArrayList<String> unfilledHours;
+    public static ArrayList<String> unfilledHours = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,6 +95,7 @@ public class TimeManagement extends ActionBarActivity {
         SharedPreferences sharedPrefs = getApplicationContext().getSharedPreferences("CHECKINHOUR", Context.MODE_PRIVATE);
         int checkInTime = sharedPrefs.getInt("checkInTime", 7);
         int checkInMinute = sharedPrefs.getInt("checkInMinute",0);
+        int firstUnfinished = hour;
         /*hour=hour-7;
         hour=hour%12;*/
 
@@ -110,15 +111,32 @@ public class TimeManagement extends ActionBarActivity {
                 Toast.makeText(TimeManagement.this, "The most recent unfilled time is "+HOURS[i],Toast.LENGTH_SHORT).show();
 */
                 unfilledHours.add(HOURS[i]);
+                if(firstUnfinished==hour){
+                    firstUnfinished=i/4;
+                }
             }
         }
 
-        listView = (ListView) findViewById(R.id.listView_future);
-        listView.setAdapter(new TimeAdapter(this, Arrays.copyOfRange(HOURS,hour*4, HOURS.length), Arrays.copyOfRange(FULLHOURS, hour, FULLHOURS.length), false));
+/*
+        Toast.makeText(TimeManagement.this, "The spilt is at "+firstUnfinished*4, Toast.LENGTH_SHORT).show();
+        Toast.makeText(TimeManagement.this, "The length of the unfilled time is "+unfilledHours.size(), Toast.LENGTH_SHORT).show();
+*/
 
-        hiddenView = (ListView)findViewById(R.id.listView_previous);
-        hiddenView.setAdapter(new TimeAdapter(this, Arrays.copyOfRange(HOURS, 0, hour*4), Arrays.copyOfRange(FULLHOURS, 0, hour), true));
 
+        if(unfilledHours.size() != 0){
+            listView = (ListView) findViewById(R.id.listView_future);
+            listView.setAdapter(new TimeAdapter(this, Arrays.copyOfRange(HOURS,firstUnfinished*4, HOURS.length), Arrays.copyOfRange(FULLHOURS, firstUnfinished, FULLHOURS.length), false));
+
+            hiddenView = (ListView)findViewById(R.id.listView_previous);
+            hiddenView.setAdapter(new TimeAdapter(this, Arrays.copyOfRange(HOURS, 0, firstUnfinished*4), Arrays.copyOfRange(FULLHOURS, 0, hour), true));
+        }else {
+
+            listView = (ListView) findViewById(R.id.listView_future);
+            listView.setAdapter(new TimeAdapter(this, Arrays.copyOfRange(HOURS, hour * 4, HOURS.length), Arrays.copyOfRange(FULLHOURS, hour, FULLHOURS.length), false));
+
+            hiddenView = (ListView) findViewById(R.id.listView_previous);
+            hiddenView.setAdapter(new TimeAdapter(this, Arrays.copyOfRange(HOURS, 0, hour * 4), Arrays.copyOfRange(FULLHOURS, 0, hour), true));
+        }
         final Button showPast = (Button) findViewById(R.id.button_previous_times);
         showPast.setOnClickListener(new View.OnClickListener() {
             @Override
