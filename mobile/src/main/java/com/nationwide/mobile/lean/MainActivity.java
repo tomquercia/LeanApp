@@ -1,7 +1,9 @@
 package com.nationwide.mobile.lean;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
@@ -183,8 +185,15 @@ public class MainActivity extends ActionBarActivity {
 
                 Calendar cal = Calendar.getInstance();
                 final int hour = cal.get(Calendar.HOUR_OF_DAY);
-                if(hour>7 && hour<20){
+                final int minute = cal.get(Calendar.MINUTE);
+                if(hour>6 && hour<20){
                     alarm.SetAlarm(getApplicationContext());
+
+                    SharedPreferences prefs = getApplicationContext().getSharedPreferences("CHECKINHOUR", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor prefsEditor = prefs.edit();
+                    prefsEditor.putInt("checkInTime", hour);
+                    prefsEditor.putInt("checkInMinute", (int)Math.floor(minute/15));
+                    prefsEditor.commit();
                     Intent intent = new Intent(MainActivity.this, TimeManagement.class);
                     startActivity(intent);
 
@@ -193,7 +202,7 @@ public class MainActivity extends ActionBarActivity {
                 }
                 else{
                     Toast.makeText(MainActivity.this, "Standard work hours for the purpose of data collection are 7 AM - 7 PM", Toast.LENGTH_SHORT).show();
-                }
+               }
             }
         });
     }

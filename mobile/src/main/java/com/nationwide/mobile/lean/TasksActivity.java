@@ -237,6 +237,9 @@ public class TasksActivity extends ActionBarActivity {
             }
 
             if(selected){
+                if(TimeManagement.getUnfilledHours() != null && TimeManagement.getUnfilledHours().contains(timeAccessed)){
+                    TimeManagement.setHourFilled(timeAccessed);
+                }
                 QuarterHour qh = QuarterHourCreator.createQuarterHour(this, categories, timeAccessed);
                 finish();
                 Log.d("Lean", "The children are " + qh.getChoices().get(1).selection.toString());

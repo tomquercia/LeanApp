@@ -34,8 +34,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.lang.reflect.Array;
 import java.sql.Time;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
@@ -69,6 +71,7 @@ public class TimeManagement extends ActionBarActivity {
     String[] FULLHOURS = new String[]{
             "9:00", "10:00", "11:00", "12:00"
     };
+    public static ArrayList<String> unfilledHours;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,8 +87,31 @@ public class TimeManagement extends ActionBarActivity {
 
         Calendar cal = Calendar.getInstance();
         final int hour = cal.get(Calendar.HOUR_OF_DAY)-7;
+        final int minute = cal.get(Calendar.MINUTE);
+        final int quarter;
+
+        quarter=(int)Math.floor(minute/15);
+
+        SharedPreferences sharedPrefs = getApplicationContext().getSharedPreferences("CHECKINHOUR", Context.MODE_PRIVATE);
+        int checkInTime = sharedPrefs.getInt("checkInTime", 7);
+        int checkInMinute = sharedPrefs.getInt("checkInMinute",0);
         /*hour=hour-7;
         hour=hour%12;*/
+
+        //HAVE TO GET THE LAST FULL QUARTER HOUR HERE!
+
+        /*Toast.makeText(TimeManagement.this, "The checkintime is "+checkInTime,Toast.LENGTH_SHORT).show();
+        Toast.makeText(TimeManagement.this, "The current minute is "+quarter,Toast.LENGTH_SHORT).show();*/
+
+
+        for(int i=(checkInTime-7)*4+checkInMinute; i<(hour)*4+quarter; i++){
+            if(QuarterHourCreator.getQuarterHour(getApplicationContext(), TimeManagement.this, HOURS[i])==null){
+/*
+                Toast.makeText(TimeManagement.this, "The most recent unfilled time is "+HOURS[i],Toast.LENGTH_SHORT).show();
+*/
+                unfilledHours.add(HOURS[i]);
+            }
+        }
 
         listView = (ListView) findViewById(R.id.listView_future);
         listView.setAdapter(new TimeAdapter(this, Arrays.copyOfRange(HOURS,hour*4, HOURS.length), Arrays.copyOfRange(FULLHOURS, hour, FULLHOURS.length), false));
@@ -355,6 +381,14 @@ public class TimeManagement extends ActionBarActivity {
 
         hiddenView = (ListView)findViewById(R.id.listView_previous);
         hiddenView.setAdapter(new TimeAdapter(this, Arrays.copyOfRange(HOURS, 0, hour * 4), Arrays.copyOfRange(FULLHOURS, 0, hour), true));
+    }
+
+    public static ArrayList<String> getUnfilledHours(){
+        return unfilledHours;
+    }
+
+    public static void setHourFilled(String toRemove){
+        unfilledHours.remove(unfilledHours.indexOf(toRemove));
     }
 
     @Override

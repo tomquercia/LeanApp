@@ -82,6 +82,7 @@
                 android:textColor="@color/black_text"
                 android:layout_marginLeft="5dp"
                 android:hint="First Name"
+                android:imeOptions="actionNext"
                 />
             <EditText
                 android:layout_width="fill_parent"
@@ -91,7 +92,8 @@
                 android:textColorHint="@color/darkgrey"
                 android:textColor="@color/black_text"
                 android:layout_marginLeft="5dp"
-                android:hint="Last Name" />
+                android:hint="Last Name"
+                android:imeOptions="actionNext"/>
 
 
         </LinearLayout>
@@ -127,6 +129,7 @@
                 android:textColor="@color/black_text"
                 android:layout_marginLeft="5dp"
                 android:hint="Developer, Analyst, etc."
+                android:imeOptions="actionNext"
                 />
         </LinearLayout>
 
@@ -158,6 +161,7 @@
                 android:textColor="@color/black_text"
                 android:layout_marginLeft="5dp"
                 android:hint="Fuzzy Logic, Invictus, etc."
+                android:imeOptions="actionNext"
                 />
         </LinearLayout>
 
@@ -189,6 +193,7 @@
                 android:textColor="@color/black_text"
                 android:layout_marginLeft="5dp"
                 android:hint="First Name"
+                android:imeOptions="actionNext"
                 />
             <EditText
                 android:layout_width="fill_parent"
@@ -198,7 +203,8 @@
                 android:textColorHint="@color/darkgrey"
                 android:textColor="@color/black_text"
                 android:layout_marginLeft="5dp"
-                android:hint="Last Name" />
+                android:hint="Last Name"
+                android:imeOptions="actionNext"/>
 
 
         </LinearLayout>
@@ -258,6 +264,7 @@
                 android:textColor="@color/black_text"
                 android:layout_marginLeft="5dp"
                 android:hint="Columbus, etc"
+                android:imeOptions="actionNext"
                 />
             <EditText
                 android:layout_width="fill_parent"
@@ -267,7 +274,8 @@
                 android:textColorHint="@color/darkgrey"
                 android:textColor="@color/black_text"
                 android:layout_marginLeft="5dp"
-                android:hint="Plaza 1, etc" />
+                android:hint="Plaza 1, etc"
+                android:imeOptions="actionNext"/>
             <EditText
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -278,7 +286,8 @@
                 android:textColor="@color/black_text"
                 android:layout_marginLeft="5dp"
                 android:inputType="number"
-                android:maxLength="2" />
+                android:maxLength="2"
+                android:imeOptions="actionDone"/>
 
         </LinearLayout>
 
