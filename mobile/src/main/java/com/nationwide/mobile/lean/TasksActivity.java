@@ -50,6 +50,8 @@ public class TasksActivity extends ActionBarActivity {
         String time = intent.getStringExtra("TIME");
         timeAccessed=time;
         toolbar.setTitle(time);
+        TextView t = (TextView)findViewById(R.id.text_view_help);
+        t.setText("Tap a category below and check off any tasks you worked on between " + time + " today");
 
 
         helpPref = this.getSharedPreferences("HELP", Context.MODE_PRIVATE);

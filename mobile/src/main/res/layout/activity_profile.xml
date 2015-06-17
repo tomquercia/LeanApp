@@ -130,7 +130,7 @@
                 android:layout_marginLeft="5dp"
                 android:hint="Developer, Analyst, etc."
                 android:imeOptions="actionNext"
-                android:textIsSelectable="true" />
+                android:textIsSelectable="false" />
         </LinearLayout>
 
         <TextView
@@ -194,7 +194,7 @@
                 android:layout_marginLeft="5dp"
                 android:hint="First Name"
                 android:imeOptions="actionNext"
-                android:textIsSelectable="true" />
+                android:textIsSelectable="false" />
             <EditText
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"

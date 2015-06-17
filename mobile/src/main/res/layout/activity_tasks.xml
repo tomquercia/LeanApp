@@ -41,7 +41,7 @@
             style="?android:attr/borderlessButtonStyle"
             android:layout_gravity="center"
             android:text="@string/got_it"
-            android:textSize="1sp"
+            android:textSize="16sp"
             android:layout_alignParentRight="true"
             android:layout_below="@+id/text_view_help"
             android:textColor="@color/white" />
