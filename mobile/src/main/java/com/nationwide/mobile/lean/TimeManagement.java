@@ -181,7 +181,7 @@ public class TimeManagement extends ActionBarActivity {
                     hiddenView.setVisibility(View.VISIBLE);
                     expand((LinearLayout) findViewById(R.id.times_drawer));
                     showPast.setText(getResources().getString(R.string.hide_previous));
-                    hiddenView.setSelection(listView.getCount() - 1);
+                    hiddenView.setSelection(hiddenView.getCount() - 1);
                     enabled = 1;
                 }
                 else{
