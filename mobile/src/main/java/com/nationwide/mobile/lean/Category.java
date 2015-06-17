@@ -52,17 +52,14 @@ public class Category {
             case "Defect Management":
                 children=context.getResources().getStringArray(R.array.defect_management);
                 break;
-            case "Requests (enhancements, CQ issues, DR, etc)":
+            case "Requests":
                 children=context.getResources().getStringArray(R.array.requests);
                 break;
             case "Requirements":
                 children=context.getResources().getStringArray(R.array.requirements);
                 break;
-            case "Item Testing":
-                children=context.getResources().getStringArray(R.array.item_testing);
-                break;
-            case "Release Testing":
-                children=context.getResources().getStringArray(R.array.release_testing);
+            case "Testing":
+                children=context.getResources().getStringArray(R.array.testing);
                 break;
             case "Release / config management":
                 children=context.getResources().getStringArray(R.array.release_config_management);
@@ -126,7 +123,7 @@ public class Category {
                 parent=2;
                 children=context.getResources().getStringArray(R.array.defect_management);
                 break;
-            case "Requests (enhancements, CQ issues, DR, etc)":
+            case "Requests":
                 parent=3;
                 children=context.getResources().getStringArray(R.array.requests);
                 break;
@@ -134,28 +131,24 @@ public class Category {
                 parent=4;
                 children=context.getResources().getStringArray(R.array.requirements);
                 break;
-            case "Item Testing":
+            case "Testing":
                 parent=5;
-                children=context.getResources().getStringArray(R.array.item_testing);
-                break;
-            case "Release Testing":
-                parent=6;
-                children=context.getResources().getStringArray(R.array.release_testing);
+                children=context.getResources().getStringArray(R.array.testing);
                 break;
             case "Release / config management":
-                parent=7;
+                parent=6;
                 children=context.getResources().getStringArray(R.array.release_config_management);
                 break;
             case "Resource Management":
-                parent=8;
+                parent=7;
                 children=context.getResources().getStringArray(R.array.resource_management);
                 break;
             case "Miscellaneous":
-                parent=9;
+                parent=8;
                 children=context.getResources().getStringArray(R.array.misc);
                 break;
             default:
-                parent=9;
+                parent=8;
                 children=context.getResources().getStringArray(R.array.misc);
                 break;
         }

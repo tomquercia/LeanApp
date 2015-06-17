@@ -46,7 +46,9 @@
                         android:visibility="gone"
                         android:dividerHeight="0dp"
                         android:divider="@null"
-                        android:id="@+id/listView_previous" />
+                        android:id="@+id/listView_previous"
+                        android:stackFromBottom="true"
+                        android:transcriptMode="alwaysScroll"/>
 
 
 

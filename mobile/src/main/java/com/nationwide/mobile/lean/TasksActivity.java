@@ -225,7 +225,7 @@ public class TasksActivity extends ActionBarActivity {
             //TODO: we can add some error handling in here, like if the user hasn't selected any options or if the user only selects one item total
 
             boolean selected = false;
-            for(int i=0; i<10; i++){
+            for(int i=0; i<9; i++){
                 Category category = categories.get(i);
                 Log.d("Lean", "The children are " + category.selection.toString());
                 if(category.selection.size() != 0){

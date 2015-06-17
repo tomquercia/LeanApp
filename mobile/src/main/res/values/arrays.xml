@@ -73,8 +73,7 @@
         <item>Defect Management</item>
         <item>Requests</item>
         <item>Requirements</item>
-        <item>Item Testing</item>
-        <item>Release Testing</item>
+        <item>Testing</item>
         <item>Release / config management</item>
         <item>Resource Management</item>
         <item>Miscellaneous</item>
@@ -98,41 +97,34 @@
         <item>Creating, analyzing, recreating, estimating a defect</item>
         <item>Following up with others regarding a defect</item>
         <item>Coding, unit testing a defect</item>
-        <item>Merging code in the impacted release(s)</item>
         <item>Updating defect, reassigning defect, closing defect</item>
     </string-array>
 
     <string-array name="requests">
         <item>Attending request related meeting (e.g. prioritization)</item>
-        <item>Opening/editing/closing requests  (SC, CQ, Clarity, ITTL)</item>
+        <item>Opening/editing/closing requests  (SC, QC, Clarity, ITTL)</item>
         <item>Following up with others regarding a request</item>
         <item>Coding / unit testing requests</item>
         <item>Coding / unit testing proactive maintenance / tech debt</item>
         <item>Coding / unit testing on enhancements &lt;500 hours</item>
-        <item>Working on CQ ticket / issue</item>
+        <item>Working on QC ticket / issue</item>
         <item>Working on regulatory, compliance, or audits</item>
     </string-array>
 
     <string-array name="requirements">
         <item>Creating, updating, reviewing requirement documents</item>
-        <item>Data analysis</item>
-        <item>Requirements discussions, reviews</item>
+        <item>Data analysis &amp; research</item>
+        <item>Requirements discussions, reviews, elicitation</item>
         <item>Manage requirements in RRC or other tool (RTC, etc)</item>
     </string-array>
 
-    <string-array name="item_testing">
+    <string-array name="testing">
+        <item>Test status reporting</item>
         <item>Creating, managing, updating test plans</item>
         <item>Creating, reviewing test scenarios</item>
         <item>Designing/creating/reviewing test scripts (e.g., regression)</item>
         <item>Creating automated test scripts</item>
-        <item>Executing testing (automated, manual, regression)</item>
-    </string-array>
-
-    <string-array name="release_testing">
-        <item>Creating, managing, updating test plans</item>
-        <item>Creating, reviewing test scenarios</item>
-        <item>Designing/creating/reviewing test scripts (e.g., regression)</item>
-        <item>Executing testing (automated, manual, regression)</item>
+        <item>Executing testing (automated, manual, regression, performance)</item>
         <item>Performing post release checkouts and testing</item>
     </string-array>
 
@@ -161,6 +153,7 @@
         <item>Monitoring / running batch jobs / flows</item>
         <item>Supporting lean app maintenance activities (CFR, VSM)</item>
         <item>Supporting other teams (ad hoc consulting)</item>
+        <item>Continuous improvement / strategic objectives</item>
         <item>Training, education, onboarding</item>
         <item>Waiting on environments/flows to be ready</item>
         <item>Working on disaster recovery</item>
