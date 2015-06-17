@@ -22,6 +22,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.gcm.Task;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -247,6 +249,7 @@ public class TasksActivity extends ActionBarActivity {
                 Log.d("Lean", "The children are " + qh.getChoices().get(1).selection.toString());
             } else{
                 //TODO: IF USER DOESN'T MAKE ANY SELECTION, MAKE A DIALOGUE TELLING HIM HE HASN'T
+                Toast.makeText(TasksActivity.this, "Please make a selection in order to save. Times can be deleted by long-pressing on the time on the previous screen.", Toast.LENGTH_SHORT).show();
                 Log.d("Lean","User hasn't made any selections!");
             }
         }else if (item.getItemId() == R.id.home) {

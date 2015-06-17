@@ -1,8 +1,11 @@
 package com.nationwide.mobile.lean;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -55,12 +58,47 @@ public class TimeAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, TasksActivity.class);
-                TextView t = (TextView)boxView1.findViewById(R.id.textview_time1);
+                TextView t = (TextView) boxView1.findViewById(R.id.textview_time1);
                 String time = t.getText().toString();
                 intent.putExtra("TIME", time);
                 context.startActivity(intent);
             }
         });
+        boxView1.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                TextView t = (TextView) boxView1.findViewById(R.id.textview_time1);
+                String time = t.getText().toString();
+
+                final QuarterHour box1QH = QuarterHourCreator.getQuarterHour(context.getApplicationContext(), context, time);
+
+                if (box1QH != null) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    builder.setMessage("Do you want to delete this time entry?")
+                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    // FIRE ZE MISSILES!
+                                    SharedPreferences prefs = context.getSharedPreferences(box1QH.getQuarterHour(), Context.MODE_PRIVATE);
+                                    SharedPreferences.Editor prefsEditor = prefs.edit();
+                                    prefsEditor.remove(box1QH.getQuarterHour());
+                                    prefsEditor.commit();
+
+                                    //DO WE HAVE TO INVALIDATE THE VIEW HERE???????
+                                }
+                            })
+                            .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    // User cancelled the dialog
+                                }
+                            });
+                    // Create the AlertDialog object and return it
+                    builder.create();
+                }
+                return true;
+            }
+        });
+
+
         final View boxView2 = listView.findViewById(R.id.box2);
         boxView2.setOnClickListener(new View.OnClickListener() {
             @Override

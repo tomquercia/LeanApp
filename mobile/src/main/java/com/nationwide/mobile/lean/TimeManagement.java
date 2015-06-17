@@ -105,8 +105,9 @@ public class TimeManagement extends ActionBarActivity {
         Toast.makeText(TimeManagement.this, "The current minute is "+quarter,Toast.LENGTH_SHORT).show();*/
 
 
-        for(int i=(checkInTime-7)*4+checkInMinute; i<(hour)*4+quarter; i++){
+        for(int i=(checkInTime-7)*4+checkInMinute; i<HOURS.length && i<(hour)*4+quarter; i++){
             if(QuarterHourCreator.getQuarterHour(getApplicationContext(), TimeManagement.this, HOURS[i])==null){
+                Log.d("Lean", "We're running through the quarter hours with "+HOURS[i]);
 /*
                 Toast.makeText(TimeManagement.this, "The most recent unfilled time is "+HOURS[i],Toast.LENGTH_SHORT).show();
 */
@@ -116,19 +117,54 @@ public class TimeManagement extends ActionBarActivity {
                 }
             }
         }
-
 /*
         Toast.makeText(TimeManagement.this, "The spilt is at "+firstUnfinished*4, Toast.LENGTH_SHORT).show();
-        Toast.makeText(TimeManagement.this, "The length of the unfilled time is "+unfilledHours.size(), Toast.LENGTH_SHORT).show();
-*/
+        Toast.makeText(TimeManagement.this, "The length of the unfilled time is "+unfilledHours.size(), Toast.LENGTH_SHORT).show();*/
+
+        int unfinishedHour=0;
 
 
         if(unfilledHours.size() != 0){
+            for(int i=0;i<HOURS.length; i++){
+                if(HOURS[i].equalsIgnoreCase(unfilledHours.get(0))){
+                    unfinishedHour=i;
+                }
+            }
+            unfinishedHour = (int)Math.floor(unfinishedHour/4);
+            unfinishedHour = unfinishedHour*4;
+
+/*
+            Toast.makeText(TimeManagement.this, "The unfinished Hour that should work is "+unfinishedHour, Toast.LENGTH_SHORT).show();
+*/
+            Log.d("Lean", "The unfinished Hour that should work is "+unfinishedHour);
+
+            String[] quarterHoursStart = Arrays.copyOfRange(HOURS,unfinishedHour, HOURS.length);
+            String[] fullHourStart = Arrays.copyOfRange(FULLHOURS, unfinishedHour/4, FULLHOURS.length);
+            for(int i=0; i<quarterHoursStart.length;i++){
+                Log.d("Lean", "QuarterHoursStart "+quarterHoursStart[i]);
+            }
+
+            for(int i=0; i<fullHourStart.length;i++){
+                Log.d("Lean", "fullHourStart "+fullHourStart[i]);
+            }
+
+
+            String[] quarterHoursFinish = Arrays.copyOfRange(HOURS, 0, unfinishedHour);
+            String[] fullHoursFinish = Arrays.copyOfRange(FULLHOURS, 0, unfinishedHour/4);
+
+            for(int i=0; i<quarterHoursFinish.length;i++){
+                Log.d("Lean", "QuarterHoursStart "+quarterHoursFinish[i]);
+            }
+
+            for(int i=0; i<fullHoursFinish.length;i++){
+                Log.d("Lean", "fullHourStart "+fullHoursFinish[i]);
+            }
+
             listView = (ListView) findViewById(R.id.listView_future);
-            listView.setAdapter(new TimeAdapter(this, Arrays.copyOfRange(HOURS,firstUnfinished*4, HOURS.length), Arrays.copyOfRange(FULLHOURS, firstUnfinished, FULLHOURS.length), false));
+            listView.setAdapter(new TimeAdapter(this, quarterHoursStart, fullHourStart, false));
 
             hiddenView = (ListView)findViewById(R.id.listView_previous);
-            hiddenView.setAdapter(new TimeAdapter(this, Arrays.copyOfRange(HOURS, 0, firstUnfinished*4), Arrays.copyOfRange(FULLHOURS, 0, hour), true));
+            hiddenView.setAdapter(new TimeAdapter(this, quarterHoursFinish, fullHoursFinish, true));
         }else {
 
             listView = (ListView) findViewById(R.id.listView_future);
@@ -187,7 +223,9 @@ public class TimeManagement extends ActionBarActivity {
 
                 if(child!=null && mGestureDetector.onTouchEvent(motionEvent)){
                     Drawer.closeDrawers();
+/*
                     Toast.makeText(TimeManagement.this,"The Item Clicked is: "+recyclerView.getChildPosition(child),Toast.LENGTH_SHORT).show();
+*/
                     if(recyclerView.getChildPosition(child)==1){
                         Intent intent = new Intent(TimeManagement.this, ProfileActivity.class);
                         startActivity(intent);
@@ -253,7 +291,7 @@ public class TimeManagement extends ActionBarActivity {
                 User user = UserCreator.getUser(getApplicationContext(), TimeManagement.this);
                 Gson gson = new Gson();
                 String jsonUser = gson.toJson(user);
-                String output = jsonUser;
+                String output = "{\"user\":"+jsonUser;
                 for(int i=0; i<HOURS.length; i++){
                     SharedPreferences prefs = getApplicationContext().getSharedPreferences(HOURS[i], Context.MODE_PRIVATE);;
 /*
@@ -263,11 +301,12 @@ public class TimeManagement extends ActionBarActivity {
                         Log.d("Lean", "User Profile Already Exists");
                         String json = prefs.getString("quarterHour", "");
                         Log.d("Lean", "Reading the json!!! " + json);
-                        output += json;
+                        output += ",\""+HOURS[i]+"\":"+json;
                     }else{
                         Log.d("Lean", "Saved time does not exist");
                     }
                 }
+                output+="}";
 
                 try {
                     // catches IOException below
@@ -277,7 +316,9 @@ public class TimeManagement extends ActionBarActivity {
        * This is done for security-reasons.
        * We chose MODE_WORLD_READABLE, because
        *  we have nothing to hide in our file */
-                    FileOutputStream fOut = openFileOutput(user.getFirstName()+user.getLastName(),
+                    Calendar cal = Calendar.getInstance();
+                    String date = cal.getTime().toString();
+                    FileOutputStream fOut = openFileOutput(user.getFirstName().charAt(0)+user.getLastName().charAt(0)+date,
                             MODE_WORLD_READABLE);
                     OutputStreamWriter osw = new OutputStreamWriter(fOut);
 
@@ -382,7 +423,7 @@ public class TimeManagement extends ActionBarActivity {
     @Override
     public void onStart(){
         super.onStart();
-        Log.d("Lean", "in the on start");
+/*        Log.d("Lean", "in the on start");
         DrawerLayout drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout1);
         drawerLayout.invalidate();
 
@@ -391,14 +432,104 @@ public class TimeManagement extends ActionBarActivity {
 
         Calendar cal = Calendar.getInstance();
         int hour = cal.get(Calendar.HOUR_OF_DAY);
-        hour=hour-7;
-        hour=hour%12;
 
         listView = (ListView) findViewById(R.id.listView_future);
         listView.setAdapter(new TimeAdapter(this, Arrays.copyOfRange(HOURS, hour * 4, HOURS.length), Arrays.copyOfRange(FULLHOURS, hour, FULLHOURS.length), false));
 
         hiddenView = (ListView)findViewById(R.id.listView_previous);
-        hiddenView.setAdapter(new TimeAdapter(this, Arrays.copyOfRange(HOURS, 0, hour * 4), Arrays.copyOfRange(FULLHOURS, 0, hour), true));
+        hiddenView.setAdapter(new TimeAdapter(this, Arrays.copyOfRange(HOURS, 0, hour * 4), Arrays.copyOfRange(FULLHOURS, 0, hour), true));*/
+
+        HOURS = getResources().getStringArray(R.array.times);
+        FULLHOURS = getResources().getStringArray(R.array.full_hours);
+
+        Calendar cal = Calendar.getInstance();
+        final int hour = cal.get(Calendar.HOUR_OF_DAY)-7;
+        final int minute = cal.get(Calendar.MINUTE);
+        final int quarter;
+
+        quarter=(int)Math.floor(minute/15);
+
+        SharedPreferences sharedPrefs = getApplicationContext().getSharedPreferences("CHECKINHOUR", Context.MODE_PRIVATE);
+        int checkInTime = sharedPrefs.getInt("checkInTime", 7);
+        int checkInMinute = sharedPrefs.getInt("checkInMinute",0);
+        int firstUnfinished = hour;
+        /*hour=hour-7;
+        hour=hour%12;*/
+
+        //HAVE TO GET THE LAST FULL QUARTER HOUR HERE!
+
+        /*Toast.makeText(TimeManagement.this, "The checkintime is "+checkInTime,Toast.LENGTH_SHORT).show();
+        Toast.makeText(TimeManagement.this, "The current minute is "+quarter,Toast.LENGTH_SHORT).show();*/
+
+
+        for(int i=(checkInTime-7)*4+checkInMinute; i<(hour)*4+quarter; i++){
+            if(QuarterHourCreator.getQuarterHour(getApplicationContext(), TimeManagement.this, HOURS[i])==null){
+                Log.d("Lean", "We're running through the quarter hours with "+HOURS[i]);
+/*
+                Toast.makeText(TimeManagement.this, "The most recent unfilled time is "+HOURS[i],Toast.LENGTH_SHORT).show();
+*/
+                unfilledHours.add(HOURS[i]);
+                if(firstUnfinished==hour){
+                    firstUnfinished=i/4;
+                }
+            }
+        }
+
+/*        Toast.makeText(TimeManagement.this, "The spilt is at "+firstUnfinished*4, Toast.LENGTH_SHORT).show();
+        Toast.makeText(TimeManagement.this, "The length of the unfilled time is "+unfilledHours.size(), Toast.LENGTH_SHORT).show();*/
+
+        int unfinishedHour=0;
+
+
+        if(unfilledHours.size() != 0){
+            for(int i=0;i<HOURS.length; i++){
+                if(HOURS[i].equalsIgnoreCase(unfilledHours.get(0))){
+                    unfinishedHour=i;
+                }
+            }
+            unfinishedHour = (int)Math.floor(unfinishedHour/4);
+            unfinishedHour = unfinishedHour*4;
+
+/*
+            Toast.makeText(TimeManagement.this, "The unfinished Hour that should work is "+unfinishedHour, Toast.LENGTH_SHORT).show();
+*/
+            Log.d("Lean", "The unfinished Hour that should work is "+unfinishedHour);
+
+            String[] quarterHoursStart = Arrays.copyOfRange(HOURS,unfinishedHour, HOURS.length);
+            String[] fullHourStart = Arrays.copyOfRange(FULLHOURS, unfinishedHour/4, FULLHOURS.length);
+            for(int i=0; i<quarterHoursStart.length;i++){
+                Log.d("Lean", "QuarterHoursStart "+quarterHoursStart[i]);
+            }
+
+            for(int i=0; i<fullHourStart.length;i++){
+                Log.d("Lean", "fullHourStart "+fullHourStart[i]);
+            }
+
+
+            String[] quarterHoursFinish = Arrays.copyOfRange(HOURS, 0, unfinishedHour);
+            String[] fullHoursFinish = Arrays.copyOfRange(FULLHOURS, 0, unfinishedHour/4);
+
+            for(int i=0; i<quarterHoursFinish.length;i++){
+                Log.d("Lean", "QuarterHoursStart "+quarterHoursFinish[i]);
+            }
+
+            for(int i=0; i<fullHoursFinish.length;i++){
+                Log.d("Lean", "fullHourStart "+fullHoursFinish[i]);
+            }
+
+            listView = (ListView) findViewById(R.id.listView_future);
+            listView.setAdapter(new TimeAdapter(this, quarterHoursStart, fullHourStart, false));
+
+            hiddenView = (ListView)findViewById(R.id.listView_previous);
+            hiddenView.setAdapter(new TimeAdapter(this, quarterHoursFinish, fullHoursFinish, true));
+        }else {
+
+            listView = (ListView) findViewById(R.id.listView_future);
+            listView.setAdapter(new TimeAdapter(this, Arrays.copyOfRange(HOURS, hour * 4, HOURS.length), Arrays.copyOfRange(FULLHOURS, hour, FULLHOURS.length), false));
+
+            hiddenView = (ListView) findViewById(R.id.listView_previous);
+            hiddenView.setAdapter(new TimeAdapter(this, Arrays.copyOfRange(HOURS, 0, hour * 4), Arrays.copyOfRange(FULLHOURS, 0, hour), true));
+        }
     }
 
     public static ArrayList<String> getUnfilledHours(){

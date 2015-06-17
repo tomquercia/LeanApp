@@ -129,8 +129,7 @@
                 android:textColor="@color/black_87"
                 android:layout_marginLeft="5dp"
                 android:hint="Developer, Analyst, etc."
-                android:imeOptions="actionNext"
-                android:textIsSelectable="false" />
+                android:imeOptions="actionNext" />
         </LinearLayout>
 
         <TextView
@@ -193,8 +192,7 @@
                 android:textColor="@color/black_87"
                 android:layout_marginLeft="5dp"
                 android:hint="First Name"
-                android:imeOptions="actionNext"
-                android:textIsSelectable="false" />
+                android:imeOptions="actionNext"/>
             <EditText
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
