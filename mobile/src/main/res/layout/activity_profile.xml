@@ -30,7 +30,8 @@
             android:paddingRight="0dp"
             android:paddingTop="0dp"
             android:paddingBottom="0dp"
-            android:background="@drawable/signup_bg">
+            android:background="@drawable/signup_bg"
+            android:layout_alignParentEnd="false">
 
 
             <TextView
@@ -83,7 +84,7 @@
                 android:layout_marginLeft="5dp"
                 android:hint="First Name"
                 android:imeOptions="actionNext"
-                />
+                android:singleLine="true" />
             <EditText
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -93,7 +94,8 @@
                 android:textColor="@color/black_87"
                 android:layout_marginLeft="5dp"
                 android:hint="Last Name"
-                android:imeOptions="actionNext"/>
+                android:imeOptions="actionNext"
+                android:singleLine="true" />
 
 
         </LinearLayout>
@@ -161,7 +163,7 @@
                 android:layout_marginLeft="5dp"
                 android:hint="Fuzzy Logic, Invictus, etc."
                 android:imeOptions="actionNext"
-                />
+                android:singleLine="true" />
         </LinearLayout>
 
         <TextView
@@ -192,7 +194,8 @@
                 android:textColor="@color/black_87"
                 android:layout_marginLeft="5dp"
                 android:hint="First Name"
-                android:imeOptions="actionNext"/>
+                android:imeOptions="actionNext"
+                android:singleLine="true" />
             <EditText
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -202,7 +205,8 @@
                 android:textColor="@color/black_text"
                 android:layout_marginLeft="5dp"
                 android:hint="Last Name"
-                android:imeOptions="actionNext"/>
+                android:imeOptions="actionNext"
+                android:singleLine="true" />
 
 
         </LinearLayout>
@@ -263,7 +267,7 @@
                 android:layout_marginLeft="5dp"
                 android:hint="Columbus, etc"
                 android:imeOptions="actionNext"
-                />
+                android:singleLine="true" />
             <EditText
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -273,7 +277,8 @@
                 android:textColor="@color/black_87"
                 android:layout_marginLeft="5dp"
                 android:hint="Plaza 1, etc"
-                android:imeOptions="actionNext"/>
+                android:imeOptions="actionNext"
+                android:singleLine="true" />
             <EditText
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -285,7 +290,8 @@
                 android:layout_marginLeft="5dp"
                 android:inputType="number"
                 android:maxLength="2"
-                android:imeOptions="actionDone"/>
+                android:imeOptions="actionDone"
+                android:singleLine="true" />
 
         </LinearLayout>
 
