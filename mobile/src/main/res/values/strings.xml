@@ -25,5 +25,8 @@
     <string name="action_save">Save</string>
     <string name="got_it">OK, GOT IT</string>
     <string name="help_text">Tap a category below and check off any tasks you worked on between </string>
+    <string name="title_activity_overtime">OvertimeActivity</string>
+    <string name="overtime_message">This application is only meant to log the hours from 7:00 AM to 7:00 PM.</string>
+    <string name="submitted_message">Your timesheet has already been automatically uploaded, no further action is needed. See you tomorrow!</string>
 
 </resources>

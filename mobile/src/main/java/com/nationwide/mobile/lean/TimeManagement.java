@@ -1,5 +1,7 @@
 package com.nationwide.mobile.lean;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -86,9 +88,12 @@ public class TimeManagement extends ActionBarActivity {
         FULLHOURS = getResources().getStringArray(R.array.full_hours);
 
         Calendar cal = Calendar.getInstance();
-        final int hour = cal.get(Calendar.HOUR_OF_DAY)-7;
-        final int minute = cal.get(Calendar.MINUTE);
-        final int quarter;
+        int hour = cal.get(Calendar.HOUR_OF_DAY)-7;
+        if(hour==13){
+            hour = 12;
+        }
+        int minute = cal.get(Calendar.MINUTE);
+        int quarter;
 
         quarter=(int)Math.floor(minute/15);
 
@@ -287,6 +292,12 @@ public class TimeManagement extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 alarm.CancelAlarm(getApplicationContext());
+                Intent intent1 = new Intent(getApplicationContext(), Alarm.class);
+                intent1.putExtra("ENDOFDAY", Boolean.FALSE);
+                PendingIntent pi = PendingIntent.getBroadcast(getApplicationContext(), 1, intent1, 0);
+                AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+                alarmManager.cancel(pi);
+                pi.cancel();
                 fabToolbar.hide();
                 User user = UserCreator.getUser(getApplicationContext(), TimeManagement.this);
                 Gson gson = new Gson();
@@ -443,9 +454,12 @@ public class TimeManagement extends ActionBarActivity {
         FULLHOURS = getResources().getStringArray(R.array.full_hours);
 
         Calendar cal = Calendar.getInstance();
-        final int hour = cal.get(Calendar.HOUR_OF_DAY)-7;
-        final int minute = cal.get(Calendar.MINUTE);
-        final int quarter;
+        int hour = cal.get(Calendar.HOUR_OF_DAY)-7;
+        if(hour==13){
+            hour=12;
+        }
+        int minute = cal.get(Calendar.MINUTE);
+        int quarter;
 
         quarter=(int)Math.floor(minute/15);
 

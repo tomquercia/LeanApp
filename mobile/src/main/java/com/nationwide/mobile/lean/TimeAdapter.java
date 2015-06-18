@@ -64,9 +64,11 @@ public class TimeAdapter extends BaseAdapter {
                 context.startActivity(intent);
             }
         });
-        boxView1.setOnLongClickListener(new View.OnLongClickListener() {
+/*        boxView1.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
+                Toast.makeText(context, "Long click achieved", Toast.LENGTH_SHORT).show();
+
                 TextView t = (TextView) boxView1.findViewById(R.id.textview_time1);
                 String time = t.getText().toString();
 
@@ -77,11 +79,13 @@ public class TimeAdapter extends BaseAdapter {
                     builder.setMessage("Do you want to delete this time entry?")
                             .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
-                                    // FIRE ZE MISSILES!
-                                    SharedPreferences prefs = context.getSharedPreferences(box1QH.getQuarterHour(), Context.MODE_PRIVATE);
+                                    SharedPreferences prefs = context.getApplicationContext().getSharedPreferences(box1QH.getQuarterHour(), Context.MODE_PRIVATE);
+                                    Toast.makeText(context, "The deleting hour is "+box1QH.getQuarterHour(), Toast.LENGTH_SHORT).show();
                                     SharedPreferences.Editor prefsEditor = prefs.edit();
                                     prefsEditor.remove(box1QH.getQuarterHour());
                                     prefsEditor.commit();
+
+                                    Toast.makeText(context, "Deleted time: "+ prefs.getString(box1QH.getQuarterHour(), "null"), Toast.LENGTH_SHORT).show();
 
                                     //DO WE HAVE TO INVALIDATE THE VIEW HERE???????
                                 }
@@ -93,10 +97,14 @@ public class TimeAdapter extends BaseAdapter {
                             });
                     // Create the AlertDialog object and return it
                     builder.create();
+                    builder.show();
+                }
+                else{
+                    Toast.makeText(context, "The dialog was null!", Toast.LENGTH_SHORT).show();
                 }
                 return true;
             }
-        });
+        });*/
 
 
         final View boxView2 = listView.findViewById(R.id.box2);

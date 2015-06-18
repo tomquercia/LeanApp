@@ -1,12 +1,17 @@
 package com.nationwide.mobile.lean;
 
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
+
+import java.util.Calendar;
 
 
 public class LauncherActivity extends ActionBarActivity {
@@ -23,14 +28,22 @@ public class LauncherActivity extends ActionBarActivity {
                     new Intent(getApplicationContext(), Alarm.class),
                     PendingIntent.FLAG_NO_CREATE) != null);
 
-            if(alarmUp){
-                Log.d("Lean", "Alarm already exists");
-                intent = new Intent(this, TimeManagement.class);
-                startActivity(intent);
-            }else{
-                Log.d("Lean", "There is no alarm yet");
-                intent = new Intent(this, MainActivity.class);
-                startActivity(intent);
+            Calendar cal = Calendar.getInstance();
+            final int hour = cal.get(Calendar.HOUR_OF_DAY);
+            if(hour<7 || hour>20){
+                Intent intent1 = new Intent(LauncherActivity.this, OvertimeActivity.class);
+                startActivity(intent1);
+            }
+            else{
+                if(alarmUp){
+                    Log.d("Lean", "Alarm already exists");
+                    intent = new Intent(this, TimeManagement.class);
+                    startActivity(intent);
+                }else{
+                    Log.d("Lean", "There is no alarm yet");
+                    intent = new Intent(this, MainActivity.class);
+                    startActivity(intent);
+                }
             }
             //if they haven't checked in, take them to the check in page
             //if they haven't registered, they will automatically be forwarded to the registration page.

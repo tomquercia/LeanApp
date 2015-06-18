@@ -248,8 +248,13 @@ public class TasksActivity extends ActionBarActivity {
                 finish();
                 Log.d("Lean", "The children are " + qh.getChoices().get(1).selection.toString());
             } else{
-                //TODO: IF USER DOESN'T MAKE ANY SELECTION, MAKE A DIALOGUE TELLING HIM HE HASN'T
-                Toast.makeText(TasksActivity.this, "Please make a selection in order to save. Times can be deleted by long-pressing on the time on the previous screen.", Toast.LENGTH_SHORT).show();
+                /*Toast.makeText(TasksActivity.this, "Please make a selection in order to save. Times can be deleted by long-pressing on the time on the previous screen.", Toast.LENGTH_SHORT).show();*/
+                SharedPreferences prefs = getApplicationContext().getSharedPreferences(timeAccessed, Context.MODE_PRIVATE);
+                SharedPreferences.Editor prefsEditor = prefs.edit();
+                prefsEditor.remove(timeAccessed);
+                prefsEditor.remove("valid");
+                prefsEditor.commit();
+                finish();
                 Log.d("Lean","User hasn't made any selections!");
             }
         }else if (item.getItemId() == R.id.home) {
