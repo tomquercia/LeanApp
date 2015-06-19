@@ -122,16 +122,27 @@
             android:layout_width="match_parent"
             android:layout_below="@+id/textview_role"
             android:layout_height="wrap_content">
-            <EditText
+            <!--<EditText-->
+                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_weight=".5"-->
+                <!--android:id="@+id/role"-->
+                <!--android:textColorHint="@color/header_black"-->
+                <!--android:textColor="@color/black_87"-->
+                <!--android:layout_marginLeft="5dp"-->
+                <!--android:hint="Developer, Analyst, etc."-->
+                <!--android:imeOptions="actionNext" />-->
+            <Spinner
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/roles_spinner"
                 android:layout_weight=".5"
-                android:id="@+id/role"
-                android:textColorHint="@color/header_black"
-                android:textColor="@color/black_87"
-                android:layout_marginLeft="5dp"
-                android:hint="Developer, Analyst, etc."
-                android:imeOptions="actionNext" />
+                android:spinnerMode="dropdown"
+                android:prompt="@string/select_role"
+                android:dropDownVerticalOffset="-60dp"
+                android:transitionGroup="false"
+                android:entries="@array/roles"
+                android:popupBackground="@color/nw_yellow" />
         </LinearLayout>
 
         <TextView

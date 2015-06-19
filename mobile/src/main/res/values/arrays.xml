@@ -67,6 +67,17 @@
     </string-array>
 
 
+    <string-array name="roles">
+        <item>Developer</item>
+        <item>Test Analyst</item>
+        <item>Requirements Analyst</item>
+        <item>Development Lead</item>
+        <item>Test Lead</item>
+        <item>Requirements Lead</item>
+        <item>Manager</item>
+    </string-array>
+
+
     <string-array name="tasks">
         <item>Build</item>
         <item>Incident Management</item>

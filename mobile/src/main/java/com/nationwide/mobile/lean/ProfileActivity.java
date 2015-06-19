@@ -9,8 +9,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 
 public class ProfileActivity extends ActionBarActivity {
@@ -21,7 +23,9 @@ public class ProfileActivity extends ActionBarActivity {
         setContentView(R.layout.activity_profile);
         final EditText firstName = (EditText) findViewById(R.id.first_name);
         final EditText lastName = (EditText) findViewById(R.id.last_name);
-        final EditText role = (EditText) findViewById(R.id.role);
+        final Spinner role = (Spinner) findViewById(R.id.roles_spinner);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.spinner_item,getResources().getStringArray(R.array.roles));
+        role.setAdapter(adapter);
         final EditText team = (EditText) findViewById(R.id.team);
         final EditText managerFirstName = (EditText) findViewById(R.id.manager_first_name);
         final EditText managerLastName = (EditText) findViewById(R.id.manager_last_name);
@@ -36,7 +40,14 @@ public class ProfileActivity extends ActionBarActivity {
             User user = UserCreator.getUser(getApplicationContext(), this);
             firstName.setText(user.getFirstName());
             lastName.setText(user.getLastName());
-            role.setText(user.getRole());
+            String[] rolesArray = getResources().getStringArray(R.array.roles);
+            int selection = 0;
+            for (int i=0; i<rolesArray.length; i++){
+                if(user.getRole().equalsIgnoreCase(rolesArray[i])){
+                    selection = i;
+                }
+            }
+            role.setSelection(selection);
             team.setText(user.getTeam());
             managerFirstName.setText(user.getManagerFirstName());
             managerLastName.setText(user.getManagerLastName());
@@ -55,9 +66,6 @@ public class ProfileActivity extends ActionBarActivity {
                 }
                 else if(lastName.getText().toString().equalsIgnoreCase("")){
                     lastName.setError("You need to put yo last name in, fool!");
-                }
-                else if(role.getText().toString().equalsIgnoreCase("")){
-                    role.setError("You need to put yo role in, fool!");
                 }
                 else if(team.getText().toString().equalsIgnoreCase("")){
                     team.setError("You need to put yo team in, fool!");
@@ -81,7 +89,7 @@ public class ProfileActivity extends ActionBarActivity {
                     UserCreator.createUser(getApplicationContext(),
                             firstName.getText().toString(),
                             lastName.getText().toString(),
-                            role.getText().toString(),
+                            role.getSelectedItem().toString(),
                             team.getText().toString(),
                             managerFirstName.getText().toString(),
                             managerLastName.getText().toString(),
