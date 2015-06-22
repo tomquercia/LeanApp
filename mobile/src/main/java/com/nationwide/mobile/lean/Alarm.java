@@ -38,13 +38,11 @@ public class Alarm extends BroadcastReceiver
         Calendar cal = Calendar.getInstance();
         final int hour = cal.get(Calendar.HOUR_OF_DAY);
 
-        String time = intent.getStringExtra(ENDOFDAY);
-
-        if(time.equalsIgnoreCase(ENDOFDAY)){
+        if(hour > 20){
             Alarm alarm = new Alarm();
             alarm.CancelAlarm(context.getApplicationContext());
             Intent intent1 = new Intent(context.getApplicationContext(), Alarm.class);
-            intent1.putExtra("ENDOFDAY", Boolean.FALSE);
+            intent1.putExtra("onetime", Boolean.FALSE);
             PendingIntent pi = PendingIntent.getBroadcast(context.getApplicationContext(), 1, intent1, 0);
             AlarmManager alarmManager = (AlarmManager) context.getSystemService(context.ALARM_SERVICE);
             alarmManager.cancel(pi);
@@ -81,7 +79,7 @@ public class Alarm extends BroadcastReceiver
        *  we have nothing to hide in our file */
                 Calendar calendar = Calendar.getInstance();
                 String date = calendar.getTime().toString();
-                FileOutputStream fOut = context.openFileOutput(user.getFirstName().charAt(0)+user.getLastName().charAt(0)+date,
+                FileOutputStream fOut = context.openFileOutput(user.getFirstName().charAt(0) + user.getLastName().charAt(0) + date,
                         context.MODE_WORLD_READABLE);
                 OutputStreamWriter osw = new OutputStreamWriter(fOut);
 
@@ -100,7 +98,7 @@ public class Alarm extends BroadcastReceiver
         * Again for security reasons with
         * openFileInput(...) */
 
-                FileInputStream fIn = context.openFileInput(user.getFirstName()+user.getLastName());
+                FileInputStream fIn = context.openFileInput(user.getFirstName() + user.getLastName());
                 InputStreamReader isr = new InputStreamReader(fIn);
 
         /* Prepare a char-Array that will
@@ -122,6 +120,22 @@ public class Alarm extends BroadcastReceiver
             {ioe.printStackTrace();}
 
 
+            for(int i=0; i<HOURS.length; i++){
+                if(QuarterHourCreator.getQuarterHour(context.getApplicationContext(), context, HOURS[i])!=null){
+                    Log.d("Lean", "We're running through the quarter hours with "+HOURS[i]);
+/*
+                Toast.makeText(TimeManagement.this, "The most recent unfilled time is "+HOURS[i],Toast.LENGTH_SHORT).show();
+*/
+                    SharedPreferences prefs = context.getApplicationContext().getSharedPreferences(HOURS[i], Context.MODE_PRIVATE);
+                    SharedPreferences.Editor prefsEditor = prefs.edit();
+                    prefsEditor.remove(HOURS[i]);
+                    prefsEditor.remove("valid");
+                    prefsEditor.commit();
+                }
+
+            }
+
+
 
         }
         else if(hour>7 && hour<20) {
@@ -137,6 +151,7 @@ public class Alarm extends BroadcastReceiver
             //Toast.makeText(context, msgStr, Toast.LENGTH_LONG).show();
             Intent alarmIntent = new Intent(context, LauncherActivity.class);
             alarmIntent.putExtra("ALERT_NUMBER", alertNumber);
+            alarmIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             PendingIntent resultPendingIntent =
                     PendingIntent.getActivity(
                             context,
@@ -172,6 +187,7 @@ public class Alarm extends BroadcastReceiver
             //Toast.makeText(context, msgStr, Toast.LENGTH_LONG).show();
             Intent alarmIntent = new Intent(context, LauncherActivity.class);
             alarmIntent.putExtra("ALERT_NUMBER", alertNumber);
+            alarmIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             PendingIntent resultPendingIntent =
                     PendingIntent.getActivity(
                             context,
@@ -203,18 +219,36 @@ public class Alarm extends BroadcastReceiver
         AlarmManager am=(AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(context, Alarm.class);
         intent.putExtra(ONE_TIME, Boolean.FALSE);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         PendingIntent pi = PendingIntent.getBroadcast(context, 0, intent, 0);
 //        Long nextQuarterHour = Math.round( (double)( (double)System.currentTimeMillis()/(double)(15*60*1000) ) ) * (15*60*1000) ;
         Log.d("Lean", "Current time is "+System.currentTimeMillis());
-        am.setRepeating(AlarmManager.RTC_WAKEUP, nextQuarterHour(), 900000 , pi);
+        SharedPreferences prefs = context.getSharedPreferences("NOTIFICATIONS", Context.MODE_PRIVATE);
+        String notifyPrefs = "15 Minutes";
+        if(prefs.getBoolean("valid", false)){
+            notifyPrefs = prefs.getString("NotificationsChoice", "15 Minutes");
+        }
+
+        if(notifyPrefs.equalsIgnoreCase("15 Minutes")){
+            am.setRepeating(AlarmManager.RTC_WAKEUP, nextQuarterHour(), 900000, pi);
+        }else if(notifyPrefs.equalsIgnoreCase("30 Minutes")){
+            am.setRepeating(AlarmManager.RTC_WAKEUP, nextHalfHour(), 1800000, pi);
+        }else if (notifyPrefs.equalsIgnoreCase("1 Hour")) {
+            am.setRepeating(AlarmManager.RTC_WAKEUP, nextQuarterHour(), 900000, pi);
+        }else if(notifyPrefs.equalsIgnoreCase("never")){
+
+        } else {
+            am.setRepeating(AlarmManager.RTC_WAKEUP, nextQuarterHour(), 900000, pi);
+        }
     }
 
-    public void SetOneTimeAlarm(Context context)
+/*    public void SetOneTimeAlarm(Context context)
     {
         Log.d("Lean", "Setting Alarm");
         AlarmManager am=(AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(context, Alarm.class);
         intent.putExtra(ENDOFDAY, Boolean.FALSE);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         PendingIntent pi = PendingIntent.getBroadcast(context, 1, intent, 0);
 //        Long nextQuarterHour = Math.round( (double)( (double)System.currentTimeMillis()/(double)(15*60*1000) ) ) * (15*60*1000) ;
         Log.d("Lean", "Current time is "+System.currentTimeMillis());
@@ -228,17 +262,35 @@ public class Alarm extends BroadcastReceiver
         cal_alarm.set(Calendar.MINUTE, 0);
         cal_alarm.set(Calendar.SECOND, 0);
         if(cal_alarm.before(cal_now)){//if its in the past increment
-            cal_alarm.add(Calendar.DATE,1);
+            cal_alarm.add(Calendar.DATE, 1);
         }
 
 
         am.set(AlarmManager.RTC_WAKEUP,cal_alarm.getTimeInMillis(), pi);
-    }
+    }*/
 
     public Long nextQuarterHour(){
         Long nextQuarterHour = Math.round( (double)( (double)System.currentTimeMillis()/(double)(15*60*1000) ) ) * (15*60*1000) ;
         if(nextQuarterHour < System.currentTimeMillis()){
             nextQuarterHour+=900000;
+        }
+        Log.d("Lean", "Next Quarter Hour will be "+ nextQuarterHour);
+        return nextQuarterHour;
+    }
+
+    public Long nextHalfHour(){
+        Long nextQuarterHour = Math.round( (double)( (double)System.currentTimeMillis()/(double)(30*60*1000) ) ) * (30*60*1000) ;
+        if(nextQuarterHour < System.currentTimeMillis()){
+            nextQuarterHour+=1800000;
+        }
+        Log.d("Lean", "Next Quarter Hour will be "+ nextQuarterHour);
+        return nextQuarterHour;
+    }
+
+    public Long nextHour(){
+        Long nextQuarterHour = Math.round( (double)( (double)System.currentTimeMillis()/(double)(60*60*1000) ) ) * (60*60*1000) ;
+        if(nextQuarterHour < System.currentTimeMillis()){
+            nextQuarterHour+=3600000;
         }
         Log.d("Lean", "Next Quarter Hour will be "+ nextQuarterHour);
         return nextQuarterHour;

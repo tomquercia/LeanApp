@@ -235,13 +235,94 @@ public class TimeManagement extends ActionBarActivity {
                         Intent intent = new Intent(TimeManagement.this, ProfileActivity.class);
                         startActivity(intent);
                     }else if(recyclerView.getChildPosition(child)==2){
+                        Intent intent = new Intent(TimeManagement.this, NotificationsActivity.class);
+                        startActivity(intent);
 
                     }else if(recyclerView.getChildPosition(child)==3){
+
                         alarm.CancelAlarm(getApplicationContext());
+                        Intent intent1 = new Intent(getApplicationContext(), Alarm.class);
+                        intent1.putExtra("ENDOFDAY", Boolean.FALSE);
+                        PendingIntent pi = PendingIntent.getBroadcast(getApplicationContext(), 1, intent1, 0);
+                        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+                        alarmManager.cancel(pi);
+                        pi.cancel();
+                        fabToolbar.hide();
+                        User user = UserCreator.getUser(getApplicationContext(), TimeManagement.this);
+                        Gson gson = new Gson();
+                        String jsonUser = gson.toJson(user);
+                        String output = "{\"user\":"+jsonUser;
+                        for(int i=0; i<HOURS.length; i++){
+                            SharedPreferences prefs = getApplicationContext().getSharedPreferences(HOURS[i], Context.MODE_PRIVATE);;
+/*
+                    QuarterHour qh = QuarterHourCreator.getQuarterHour(getApplicationContext(), TimeManagement.this, HOURS[i]);
+*/
+                            if(prefs.getBoolean("valid", false)){
+                                Log.d("Lean", "User Profile Already Exists");
+                                String json = prefs.getString("quarterHour", "");
+                                Log.d("Lean", "Reading the json!!! " + json);
+                                output += ",\""+HOURS[i]+"\":"+json;
+                            }else{
+                                Log.d("Lean", "Saved time does not exist");
+                            }
+                        }
+                        output+="}";
+
+                        try {
+                            // catches IOException below
+       /* We have to use the openFileOutput()-method
+       * the ActivityContext provides, to
+       * protect your file from others and
+       * This is done for security-reasons.
+       * We chose MODE_WORLD_READABLE, because
+       *  we have nothing to hide in our file */
+                            Calendar cal = Calendar.getInstance();
+                            String date = cal.getTime().toString();
+                            FileOutputStream fOut = openFileOutput(user.getFirstName().charAt(0)+user.getLastName().charAt(0)+date,
+                                    MODE_WORLD_READABLE);
+                            OutputStreamWriter osw = new OutputStreamWriter(fOut);
+
+                            // Write the string to the file
+                            osw.write(output);
+
+       /* ensure that everything is
+        * really written out and close */
+                            osw.flush();
+                            osw.close();
+
+//Reading the file back...
+
+       /* We have to use the openFileInput()-method
+        * the ActivityContext provides.
+        * Again for security reasons with
+        * openFileInput(...) */
+
+                            FileInputStream fIn = openFileInput(user.getFirstName()+user.getLastName());
+                            InputStreamReader isr = new InputStreamReader(fIn);
+
+        /* Prepare a char-Array that will
+         * hold the chars we read back in. */
+                            char[] inputBuffer = new char[output.length()];
+
+                            // Fill the Buffer with data from the file
+                            isr.read(inputBuffer);
+
+                            // Transform the chars to a String
+                            String readString = new String(inputBuffer);
+
+                            // Check if we read back the same chars that we had written out
+                            boolean isTheSame = output.equals(readString);
+
+                            Log.i("File Reading stuff", "success = " + isTheSame);
+
+                        } catch (IOException ioe)
+                        {ioe.printStackTrace();}
+
                         Intent intent = new Intent(TimeManagement.this, MainActivity.class);
                         startActivity(intent);
-                        fabToolbar.hide();
+
                         finish();
+
                     }
 
                     return true;
@@ -375,6 +456,22 @@ public class TimeManagement extends ActionBarActivity {
                 finish();
             }
         });
+
+        for(int i=0; i<HOURS.length; i++){
+            if(QuarterHourCreator.getQuarterHour(getApplicationContext(), this, HOURS[i])!=null){
+                Log.d("Lean", "We're running through the quarter hours with "+HOURS[i]);
+/*
+                Toast.makeText(TimeManagement.this, "The most recent unfilled time is "+HOURS[i],Toast.LENGTH_SHORT).show();
+*/
+                SharedPreferences prefs = getApplicationContext().getSharedPreferences(HOURS[i], Context.MODE_PRIVATE);
+                SharedPreferences.Editor prefsEditor = prefs.edit();
+                prefsEditor.remove(HOURS[i]);
+                prefsEditor.remove("valid");
+                prefsEditor.commit();
+            }
+
+        }
+
 
     }
 

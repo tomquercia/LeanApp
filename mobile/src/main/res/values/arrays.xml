@@ -176,5 +176,12 @@
         <item>Anything else not captured above</item>
     </string-array>
 
+    <string-array name="notifications">
+        <item>15 Minutes</item>
+        <item>30 Minutes</item>
+        <item>1 Hour</item>
+        <item>Never</item>
+    </string-array>
+
 
 </resources>

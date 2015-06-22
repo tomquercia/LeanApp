@@ -28,6 +28,7 @@
     <string name="title_activity_overtime">OvertimeActivity</string>
     <string name="overtime_message">This application is only meant to log the hours from 7:00 AM to 7:00 PM.</string>
     <string name="submitted_message">Your timesheet has already been automatically uploaded, no further action is needed. See you tomorrow!</string>
+    <string name="title_activity_notifications">NotificationsActivity</string>
     <string name="select_role">Select a Role</string>
 
 </resources>

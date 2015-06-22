@@ -79,6 +79,14 @@
             android:name=".OvertimeActivity"
             android:label="@string/title_activity_overtime" >
         </activity>
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings" >
+        </activity>
+        <activity
+            android:name=".NotificationsActivity"
+            android:label="@string/title_activity_notifications" >
+        </activity>
     </application>
 
 </manifest>

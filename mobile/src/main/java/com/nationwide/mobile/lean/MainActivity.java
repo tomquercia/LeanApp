@@ -109,19 +109,50 @@ public class MainActivity extends ActionBarActivity {
 
                 if(child!=null && mGestureDetector.onTouchEvent(motionEvent)){
                     Drawer.closeDrawers();
-                    Toast.makeText(MainActivity.this,"The Item Clicked is: "+recyclerView.getChildPosition(child),Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(MainActivity.this,"The Item Clicked is: "+recyclerView.getChildPosition(child),Toast.LENGTH_SHORT).show();
 
                     if(recyclerView.getChildPosition(child)==1){
                         Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
                         startActivity(intent);
                     }else if(recyclerView.getChildPosition(child)==2){
-
-                    }else if(recyclerView.getChildPosition(child)==3){
-                        alarm.SetAlarm(getApplicationContext());
-                        Intent intent = new Intent(MainActivity.this, TimeManagement.class);
+                        Intent intent = new Intent(MainActivity.this, NotificationsActivity.class);
                         startActivity(intent);
-                        fabToolbar.hide();
-                        finish();
+                    }else if(recyclerView.getChildPosition(child)==3){
+
+/*
+                GoogleAnalytics analytics = GoogleAnalytics.getInstance(MainActivity.this);
+                Tracker tracker = analytics.newTracker("UA-63001923-2");
+
+                tracker.setScreenName("main screen");
+
+                tracker.send(new HitBuilders.EventBuilder()
+                        .setCategory("UX")
+                        .setAction("click")
+                        .setLabel("Check in")
+                        .build());
+*/
+
+                        Calendar cal = Calendar.getInstance();
+                        final int hour = cal.get(Calendar.HOUR_OF_DAY);
+                        final int minute = cal.get(Calendar.MINUTE);
+                        if(hour>6 && hour<20){
+                            alarm.SetAlarm(getApplicationContext());
+
+                            SharedPreferences prefs = getApplicationContext().getSharedPreferences("CHECKINHOUR", Context.MODE_PRIVATE);
+                            SharedPreferences.Editor prefsEditor = prefs.edit();
+                            prefsEditor.putInt("checkInTime", hour);
+                            prefsEditor.putInt("checkInMinute", (int)Math.floor(minute/15));
+                            prefsEditor.commit();
+                            Intent intent = new Intent(MainActivity.this, TimeManagement.class);
+                            startActivity(intent);
+
+                            //Toast.makeText(getApplicationContext(), "You clicked the button", Toast.LENGTH_SHORT).show();
+                            fabToolbar.hide();
+                        }
+                        else{
+                            Toast.makeText(MainActivity.this, "Standard work hours for the purpose of data collection are 7 AM - 7 PM", Toast.LENGTH_SHORT).show();
+                        }
+
                     }
 
                     return true;
